@@ -1,0 +1,37 @@
+menuconfig OTA
+	bool "OTA support"
+
+menuconfig OTA_LOCAL
+	bool "OTA_LOCAL Servers Support"
+	depends on OTA
+	
+menuconfig OTA_SERVICE
+	bool "OTA_REMOTE Cloud Servers Support"
+	depends on OTA
+	select CJSON
+	select MQTT
+	
+choice
+	depends on OTA
+	prompt "OTA Mode"
+	default OTA_COMPRESSION_UPDATE
+
+	#config OTA_NOT_SUPPORT_UPDATE	
+	#bool "not support update"
+
+	config OTA_COMPRESSION_UPDATE
+	bool "compression update"
+
+	config OTA_DIFFERENTIAL_UPDATE
+	bool "differential update"
+
+	config OTA_AB_UPDATE
+	bool "AB update"
+endchoice
+
+config OTA_MODE_STRING
+	string
+	depends on OTA_COMPRESSION_UPDATE || OTA_DIFFERENTIAL_UPDATE || OTA_AB_UPDATE
+	default "OTA_COMPRESSION_UPDATE" if OTA_COMPRESSION_UPDATE
+	default "OTA_DIFFERENTIAL_UPDATE" if OTA_DIFFERENTIAL_UPDATE
+	default "OTA_AB_UPDATE" if OTA_AB_UPDATE

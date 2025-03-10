@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_DMA),y)
+
+	CSRCS += dma.c
+
+	VPATH += :drivers/dma
+	INCPATHS +=drivers/dma
+
+endif

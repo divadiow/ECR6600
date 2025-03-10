@@ -1,0 +1,94 @@
+comment "RTOS Configuration Start"
+
+config FREERTOS
+	bool
+	select PIT
+	select TRNG
+	select OS_TICK_COMPENSTATION
+	default y
+
+config RTOS
+	string
+	default "freertos"
+
+config CEVA_RTOS
+	bool
+	default n
+
+
+menu "RTOS Debug Configuration"
+
+
+config TASK_IRQ_SWITCH_TRACE
+	bool "Trace Tasks&Irq Switch. Help in Crash Location, Development Stage Recommended to Open"
+	default y
+	---help---
+		Set the latest TASK_ IRQ_ SWITCH_ The thread running/interrupted running of TRACE times is recorded in the global variable. It is used to understand the running conditions before exceptions when  debugging.
+	if TASK_IRQ_SWITCH_TRACE
+		config TASK_IRQ_SWITCH_TRACE_NUM
+		int "Trace Tasks&Irq Switch Buff Size"
+		default 10
+	endif
+
+
+config HEAP_BOUNDARY_CHECK
+	bool "Heap Bounary Check When Heap_free. Small Cost of Space&Time, Development Stage Recommended to Open"
+	default n
+	---help---
+		Check the mark when the memory is free to ensure that the heap does not overflow
+
+
+config HEAP_CHECK_WHEN_TASK_SWITCHING
+	bool "Heap List Check When Tasks Switching. A Lot Cost on Switch, Debug Recommended to Open"
+	default n
+	---help---
+		This function is a memory heap and stack detection function developed by eswin and can replace the configCHECK of FreeRTOS_ FOR_ STACK_ OVERFLOW function
+
+
+config FREERTOS_configCHECK_FOR_STACK_OVERFLOW
+	int "Freertos Config: configCHECK_FOR_STACK_OVERFLOW"
+	default 0
+	---help---
+		FreeRTOS native stack detection function, which can be configured, but is not recommended. HEAP_CHECK_WHEN_TASK_SWITCHING can override this function
+
+
+config HEAP_DEBUG
+	bool "[heaptrace]Heap Usage Stats Trace, Heap Application Record. It will increase the bin file, Memory Leak Problem Recommended to Open"
+	default n
+	---help---
+		Add records of application files and line numbers to the memory control block to count complete memory usage information, which is helpful for memory debugging
+
+
+config RUNTIME_DEBUG
+	bool "[cpu]Tasks&Irq Runtime Record, CPU usage. Recommended to Close"
+	default n
+	---help---
+		It is used to obtain the CPU utilization rate and analyze the thread/interrupt operation
+
+config TASK_IRQ_RUN_NUM
+	bool "[switch_num]Count Running Number of Tasks&Irq, Debug, Recommended to Close"
+	default n
+	---help---
+		Counting the number of threads/interrupts running in a time period is helpful to analyze thread running
+
+
+config FLASH_DUMP
+	bool "Save Crash Information to Flash"
+	default n
+	---help---
+		The crash information is saved to flash. Use 8KB at the end of the cpu partition
+
+
+config SYSTEM_IRQ
+	bool "System Irq Runtime Record, Debug Function, Recommended to Close"
+	default n
+
+
+config OS_TICK_COMPENSTATION
+	bool "OS Tick Compensation"
+	default y
+
+endmenu
+
+comment "RTOS Configuration End"
+

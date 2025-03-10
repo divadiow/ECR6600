@@ -1,0 +1,5 @@
+
+menuconfig ECC
+	bool "ECC Driver Support"
+	select ENCRYPT_LOCK
+	default y

@@ -1,0 +1,9 @@
+
+ifeq ($(CONFIG_PHREAD),y)
+
+	CSRCS +=  pthread_local_storage.c	
+
+	VPATH += :pthread
+	INCPATHS += pthread
+
+endif

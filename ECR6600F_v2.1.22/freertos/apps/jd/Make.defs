@@ -1,0 +1,50 @@
+ifeq ($(CONFIG_JD_APP_SDK),y)
+
+JD_APP_PATH	= jd
+JD_SDK_PATH 	= $(JD_APP_PATH)/sdk
+VPATH   += :$(JD_SDK_PATH)/example
+VPATH   += :$(JD_SDK_PATH)/pal/src
+
+#ble
+ifeq ($(CONFIG_BLE_JD_ADAPTER),y)
+VPATH   += :$(JD_APP_PATH)/ble_sdk/adapter
+endif
+
+INCPATHS += $(JD_SDK_PATH)/example/ \
+			$(JD_SDK_PATH)/joylink/inc \
+			$(JD_SDK_PATH)/joylink/inc/json \
+			$(JD_SDK_PATH)/pal/inc \
+			$(TOPDIR)/components/mbedtls/mbedtls/include \
+
+#ble
+ifeq ($(CONFIG_BLE_JD_ADAPTER),y)
+INCPATHS += $(JD_APP_PATH)/ble_sdk/include
+endif
+
+CSRCS += joylink_extern_json.c \
+		 joylink_extern_ota.c \
+		 joylink_extern_sub_dev.c \
+		 joylink_extern_user.c \
+		 joylink_extern.c \
+		 joylink_flash.c \
+		 joylink_memory.c \
+		 joylink_socket.c \
+		 joylink_softap.c \
+		 joylink_stdio.c \
+		 joylink_string.c \
+		 joylink_thread.c \
+		 joylink_time.c \
+		 joylink_extern_led.c \
+
+#ble
+ifeq ($(CONFIG_BLE_JD_ADAPTER),y)
+    CSRCS += joylink_adapter.c
+    CSRCS += jd_netcfg.c
+endif
+
+#VPATH 	+=  :$(JD_COMMON_APP)/src \
+			:$(JD_COMMON_APP)/src/driver \
+			
+			
+CSRCS += jd_main.c
+endif

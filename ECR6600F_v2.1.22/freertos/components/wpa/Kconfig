@@ -1,0 +1,22 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+menuconfig WIRELESS_WPA_SUPPLICANT
+	bool "IEEE 802.11 WPA Supplicant"
+	depends on ECR6600_WIFI
+	default n
+	
+config ECR6600_DBGTRIM
+	bool "Debug Trim"
+	depends on ECR6600_WIFI
+	default y
+
+menuconfig WIRELESS_WPA3_SUPPORT
+	bool "IEEE 802.11 WIRELESS_WPA3 Support, Need MBEDTLS and MFP Feature enabled"
+	depends on WIRELESS_WPA_SUPPLICANT
+	default n
+	select MBEDTLS
+	select WIFI_MFP
+

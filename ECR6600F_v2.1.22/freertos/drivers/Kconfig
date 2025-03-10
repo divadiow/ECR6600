@@ -1,0 +1,101 @@
+comment "soc drivers"
+
+menu "UART_NUM"
+	choice CLI_UART_NUM
+		depends on CLI
+		prompt "set cli uart num"
+		default CLI_UART_0
+
+		config CLI_UART_0
+		bool "CLI_UART_0"
+
+		config CLI_UART_1
+		bool "CLI_UART_1"
+
+		config CLI_UART_2
+		bool "CLI_UART_2"
+	endchoice
+
+	choice AMT_UART_NUM
+		prompt "set amt uart num"
+		depends on WIFI_AMT_VERSION
+		default SAME_TO_CLI_UART_NUM
+
+		config SAME_TO_CLI_UART_NUM
+		bool "SAME_TO_CLI_UART_NUM"
+		
+		config AMT_UART_0
+		depends on CLI_UART_1 || CLI_UART_2
+		bool "AMT_UART_0"
+
+		config AMT_UART_1
+		depends on CLI_UART_0 || CLI_UART_2
+		bool "AMT_UART_1"
+
+		config AMT_UART_2
+		depends on CLI_UART_0 || CLI_UART_1
+		bool "AMT_UART_2"
+	endchoice
+		
+	choice AT_UART_NUM
+		prompt "set at uart num"
+		default AT_UART_1
+		
+		config AT_UART_0
+		depends on CLI_UART_1 || CLI_UART_2
+		bool "AT_UART_0"
+
+		config AT_UART_1
+		depends on CLI_UART_0 || CLI_UART_2
+		bool "AT_UART_1"
+
+		config AT_UART_2
+		depends on CLI_UART_0 || CLI_UART_1
+		bool "AT_UART_2"
+	endchoice
+	
+	choice HCI_UART_NUM
+		depends on STANDALONE_UART
+		prompt "set hci uart num"
+		default HCI_UART_1
+
+		config HCI_UART_0
+		depends on CLI_UART_1 || CLI_UART_2
+		bool "HCI_UART_0"
+
+		config HCI_UART_1
+		depends on CLI_UART_0 || CLI_UART_2
+		bool "HCI_UART_1"
+
+		config HCI_UART_2
+		depends on CLI_UART_0 || CLI_UART_1
+		bool "HCI_UART_2"
+	endchoice
+endmenu
+
+source "drivers/drivers/uart/Kconfig"
+source "drivers/drivers/pit/Kconfig"
+source "drivers/drivers/gpio/Kconfig"
+source "drivers/drivers/dma/Kconfig"
+source "drivers/drivers/aes/Kconfig"
+source "drivers/drivers/hash/Kconfig"
+source "drivers/drivers/trng/Kconfig"
+source "drivers/drivers/sdio_slave/Kconfig"
+source "drivers/drivers/sdhci/Kconfig"
+source "drivers/drivers/sdcard/Kconfig"
+source "drivers/drivers/pwm/Kconfig"
+source "drivers/drivers/timer/Kconfig"
+source "drivers/drivers/efuse/Kconfig"
+source "drivers/drivers/flash/Kconfig"
+source "drivers/drivers/ir/Kconfig"
+source "drivers/drivers/adc/Kconfig"
+source "drivers/drivers/i2c/Kconfig"
+source "drivers/drivers/i2s/Kconfig"
+source "drivers/drivers/rtc/Kconfig"
+source "drivers/drivers/spi_master/Kconfig"
+source "drivers/drivers/spi_slave/Kconfig"
+source "drivers/drivers/wdt/Kconfig"
+source "drivers/drivers/ecc/Kconfig"
+source "drivers/drivers/encrypt_lock/Kconfig"
+source "drivers/drivers/process_sensor/Kconfig"
+source "drivers/unit_test/Kconfig"

@@ -1,0 +1,92 @@
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>SETTING</title> 
+</head>
+<body>
+<table class="fixed" border="0">
+    <col width="1000px" /><col width="500px" />
+    <tr><td>
+        <h2>wifi ssid configuration</h2>
+    </td>
+    </tr>
+    <tr><td>
+        <table border="0">
+            <tr>
+                <td>
+                    <label for="setssid">Set a SSID</label>
+                </td>
+                <td colspan="2">
+                    <input id="setssid" type="text" style="width:100%;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="setpwd">Set a Password</label>
+                </td>
+                <td>
+                    <input id="setpwd" type="text" style="width:100%;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="submit" type="button" onclick="submit()">submit</button>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+</table>
+<script>
+function submit() {
+/*      var ssid_value = "\"SSID\":\"" + document.getElementById("setssid").value + "\"";
+     var pwd_value = "\"PWD\":\"" + document.getElementById("setpwd").value + "\"";
+     var submit_path = "{" + ssid_value + "," + pwd_value + "}"; */
+     var ssid_value = document.getElementById("setssid").value;
+     var pwd_value = document.getElementById("setpwd").value;
+     var submit_path = new Object();
+     submit_path.ssid = ssid_value;
+     submit_path.pwd = pwd_value;
+     var json = JSON.stringify(submit_path);
+/*     var ch_value = document.getElementById("setssid").value;
+    var ch_value = document.getElementById("setpwd").value; */
+    /* Max size of an individual file. Make sure this
+     * value is same as that set in file_server.c */
+    var MAX_FILE_SIZE = 64;
+    var MAX_FILE_SIZE_STR = "64B";
+
+    if (ssid_value.length == 0 ) {
+        alert("Please set SSID!");
+    } else if (pwd_value.length == 0) {
+        alert("Password cannot be empty!");
+    } else if (ssid_value.length > 64 || pwd_value.length > 64) {
+        alert("Length of SSID anndPassword must be less than 64B!");
+    } else {
+        document.getElementById("setssid").disabled = true;
+        document.getElementById("setpwd").disabled = true;
+        document.getElementById("submit").disabled = true;
+
+        /* var file = fileInput[0]; */
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4) {
+                if (xhttp.status == 200) {
+                    document.open();
+                    document.write(xhttp.responseText);
+                    document.close();
+                } else if (xhttp.status == 0) {
+                    alert("Server closed the connection abruptly!");
+                    location.reload()
+                } else {
+                    alert(xhttp.status + " Error!\n" + xhttp.responseText);
+                    location.reload()
+                }
+            }
+        };
+        xhttp.open("POST", "/setting", true);
+        xhttp.setRequestHeader('Content-Type','text/html');
+        xhttp.send(json); 
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+
+config RTC
+	bool 
+	default y

@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_SDCARD),y)
+
+	CSRCS += sdcard.c
+
+	VPATH += :drivers/sdcard
+	INCPATHS +=drivers/sdcard
+
+endif

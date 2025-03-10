@@ -1,0 +1,11 @@
+#menu "Tencent cloud compiler config"
+menuconfig TENCENT_CLOUD
+	bool "Tencent cloud" 
+	default n
+
+	if TENCENT_CLOUD
+		config BLE_TENCENT_ADAPTER
+		bool "Tencent cloud ble net config" 
+		default n
+	endif
+	

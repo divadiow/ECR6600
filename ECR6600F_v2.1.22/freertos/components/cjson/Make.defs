@@ -1,0 +1,12 @@
+
+ifeq ($(CONFIG_CJSON),y)
+
+	INCPATHS += $(TOPDIR)/include/os
+	
+	CSRCS +=  cJSON.c
+
+	VPATH += :cjson
+	INCPATHS +=cjson
+
+
+endif

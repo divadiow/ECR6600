@@ -1,0 +1,6 @@
+
+menuconfig WEB_CONFIG
+	select HTTPSERVER
+	bool "WEB_CONFIG Component Support"
+	depends on CMD_HTTPSERVER
+	default n

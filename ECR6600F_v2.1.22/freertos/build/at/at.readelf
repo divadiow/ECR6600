@@ -1,0 +1,97 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           Andes Technology compact code size embedded RISC processor family
+  Version:                           0x1
+  Entry point address:               0x10290
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          14078616 (bytes into file)
+  Flags:                             0x30804b52, ABI2 FP+, Andes ELF V1.4, Andes Star v3.0, EX9, IFC, PERF1, FPU_SP, FPU_REG:32/16
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         5
+  Size of section headers:           40 (bytes)
+  Number of section headers:         18
+  Section header string table index: 15
+
+Section Headers:
+  [Nr] Name
+       Type            Addr     Off    Size   ES   Lk Inf Al
+       Flags
+  [ 0] 
+       NULL            00000000 000000 000000 00   0   0  0
+       [00000000]: 
+  [ 1] .text
+       PROGBITS        00010000 001000 020214 00   0   0 16
+       [00000006]: ALLOC, EXEC
+  [ 2] .bss
+       NOBITS          00060000 022000 01a2a4 00   0   0  8
+       [00000003]: WRITE, ALLOC
+  [ 3] SHARED
+       NOBITS          00080000 022000 00e8f0 00   0   0  4
+       [00000003]: WRITE, ALLOC
+  [ 4] .data
+       PROGBITS        0008e8f0 0218f0 001778 00   0   0  8
+       [00000003]: WRITE, ALLOC
+  [ 5] .xip
+       PROGBITS        40807100 023100 0f8fdc 00   0   0  8
+       [00000007]: WRITE, ALLOC, EXEC
+  [ 6] .debug_info
+       PROGBITS        00000000 11c0dc 64f0b7 00   0   0  1
+       [00000000]: 
+  [ 7] .debug_abbrev
+       PROGBITS        00000000 76b193 081e36 00   0   0  1
+       [00000000]: 
+  [ 8] .debug_loc
+       PROGBITS        00000000 7ecfc9 1aa43a 00   0   0  1
+       [00000000]: 
+  [ 9] .debug_aranges
+       PROGBITS        00000000 997408 010ff8 00   0   0  8
+       [00000000]: 
+  [10] .debug_ranges
+       PROGBITS        00000000 9a8400 030190 00   0   0  1
+       [00000000]: 
+  [11] .debug_line
+       PROGBITS        00000000 9d8590 2cdaf8 00   0   0  1
+       [00000000]: 
+  [12] .debug_str
+       PROGBITS        00000000 ca6088 07c625 01   0   0  1
+       [00000030]: MERGE, STRINGS
+  [13] .comment
+       PROGBITS        00000000 d226ad 00006a 01   0   0  1
+       [00000030]: MERGE, STRINGS
+  [14] .debug_frame
+       PROGBITS        00000000 d22718 04aad8 00   0   0  4
+       [00000000]: 
+  [15] .shstrtab
+       STRTAB          00000000 d6d1f0 0000a7 00   0   0  1
+       [00000000]: 
+  [16] .symtab
+       SYMTAB          00000000 d6d568 0467b0 10  17 11441  4
+       [00000000]: 
+  [17] .strtab
+       STRTAB          00000000 db3d18 02df05 00   0   0  1
+       [00000000]: 
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x001000 0x00010000 0x00010000 0x20214 0x20214 R E 0x1000
+  LOAD           0x022000 0x00060000 0x00060000 0x00000 0x1a2a4 RW  0x1000
+  LOAD           0x022000 0x00080000 0x00080000 0x00000 0x0e8f0 RW  0x1000
+  LOAD           0x0218f0 0x0008e8f0 0x0008e8f0 0x01778 0x01778 RW  0x1000
+  LOAD           0x023100 0x40807100 0x40807100 0xf8fdc 0xf8fdc RWE 0x1000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text 
+   01     .bss 
+   02     SHARED 
+   03     .data 
+   04     .xip 

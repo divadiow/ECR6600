@@ -1,0 +1,8 @@
+
+ifeq ($(CONFIG_FATFS),y)
+
+	CSRCS +=  diskio.c ff.c ffsystem.c ffunicode.c
+	VPATH += :fs/fatfs
+	INCPATHS +=fs/fatfs
+
+endif

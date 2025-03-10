@@ -1,0 +1,4 @@
+
+menuconfig PROCESS_SENSOR
+	bool "PROCESS_SENSOR Driver Support"
+	default y

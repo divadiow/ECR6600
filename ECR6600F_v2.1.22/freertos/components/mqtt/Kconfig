@@ -1,0 +1,13 @@
+
+menuconfig MQTT
+	bool "MQTT Component Support"
+	default n
+	depends on LWIP
+	depends on PHREAD
+	select MBEDTLS
+	select URLPARSER
+
+menuconfig MQTT_SSL
+	bool "MQTT SSL Support"
+	default y
+	

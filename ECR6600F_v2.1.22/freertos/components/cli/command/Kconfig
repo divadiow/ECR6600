@@ -1,0 +1,120 @@
+menuconfig CMD_SHOW
+	bool "show cmd sets"
+	default y
+	if CMD_SHOW
+		config CMD_SHOW_SDK_VERSION
+		bool "show sdk_version"
+		default y
+		
+		config CMD_SHOW_REL_VERSION
+		bool "show rel_version"
+		default y
+	endif
+
+config CMD_READ
+	bool "read 32-bit value(s) from a memory&reg location"
+	default y
+
+config CMD_WRITE
+	bool "write 32-bit value(s) from a memory&reg location"
+	default y
+
+config CMD_HEALTH_MONITOR
+	bool "add task-health monitor control cmd"
+	depends on HEALTH_MONITOR
+	default y
+
+config CMD_ADC_HARDWARE
+	bool "add adc cmd"
+	depends on ADC
+	default y
+
+config CMD_BLE
+	bool "add ble cmd"
+	depends on ECR_BLE
+	default y
+
+config BLE_EMB_PRESENT
+	bool "add ble emb present cmd"
+	depends on ECR_BLE
+	default n
+	
+config CMD_WIFI
+	bool "add wifi cmd"
+	depends on ECR6600_WIFI
+	default y
+	
+config CMD_WIFI_AMT_VERSION
+	bool "add wifi amt version cmd"
+	depends on WIFI_AMT_VERSION
+	default n
+	
+config CMD_WDT
+	bool "add wdt cmd"
+	depends on WDT
+	default n
+
+config CMD_SYSTEM_DEBUG
+	bool "add system debug cmd"
+	default y
+
+config CMD_SNTP
+	bool "add sntp cmd"
+	depends on SNTP
+	default n 
+
+config CMD_SMARTCONFIG
+	bool "add smartconfig cmd"
+	depends on WIFI_SMARTCONFIG
+	default n
+
+config CMD_PSM
+	bool "add psm cmd"
+	depends on PSM_SURPORT
+	default y
+
+config CMD_OTA_SERVICE
+	bool "add ota cmd"
+	depends on OTA_SERVICE
+	default n
+
+config CMD_NV
+	bool "add nv cmd"
+	depends on NV
+	default y
+
+config CMD_IPERF_3
+	bool "add iperf cmd"
+	depends on WIRELESS_IPERF_3
+	default n
+
+config CMD_EFUSE
+	bool "add efuse cmd"
+	depends on EFUSE
+	default n
+
+config CMD_LA
+	bool "add la cmd"
+	default n
+	if CMD_LA
+		config LA
+		bool "config LA"
+		default n
+	endif
+
+config CMD_SDCARD
+	bool "add sdcard cmd"
+	select FATFS
+	default n
+
+config CMD_HTTPSERVER
+	bool "add web server(url:http://ip_addr/setting)"
+	select HTTPSERVER
+	select WEB_CONFIG
+	depends on CMD_WIFI
+	default n
+
+config CMD_MQTT
+	bool "add mqtt cmd"
+	depends on MQTT
+	default y

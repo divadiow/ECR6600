@@ -1,0 +1,37 @@
+#menu "Jingdong Config"
+	config JD_APP_SDK
+	bool
+	default n
+
+	config JD_FREERTOS_PAL
+	bool
+	default n
+
+	choice
+		prompt "Jingdong Config"
+		default NOT_SUPPORT_JD
+
+		config JD_LED
+		bool "JD LED_DEMO"
+		select JD_APP_SDK
+		select JD_FREERTOS_PAL
+
+		config JD_BREAKER
+		bool "JD BREAKER_DEMO"
+		select JD_APP_SDK
+		select JD_FREERTOS_PAL
+
+		config JD_SWITCH
+		bool "JD SWITCH_DEMO"
+		select JD_APP_SDK
+		select JD_FREERTOS_PAL
+
+		config NOT_SUPPORT_JD
+		bool "NOT SELECT JD"
+	endchoice
+#endmenu
+
+menuconfig BLE_JD_ADAPTER
+        bool "jd BLE Application interface for test"
+        depends on BLE_PRODUCT_BLEFULL
+        default n

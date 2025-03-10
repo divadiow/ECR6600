@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_BLE_PRODUCT_BLEFULL),y)
+
+	ifeq ($(CONFIG_BLE_EXAMPLES_NETCFG_SLAVE),y)
+		CSRCS +=  example_netcfg_slave.c
+		VPATH += ble_apps/src/example_netcfg
+		INCPATHS += ble_apps/api ble_apps/src/example_netcfg
+	endif
+endif

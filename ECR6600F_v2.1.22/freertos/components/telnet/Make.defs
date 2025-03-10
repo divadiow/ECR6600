@@ -1,0 +1,4 @@
+ifeq ($(CONFIG_TELNET),y)
+	CSRCS +=  telnet.c
+	VPATH += :telnet
+endif

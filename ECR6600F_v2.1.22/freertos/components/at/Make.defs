@@ -1,0 +1,31 @@
+ifeq ($(CONFIG_APP_AT_COMMAND),y)
+    	
+	CSRCS += at_ota.c dce_basic_commands.c dce.c dce_utils.c \
+		basic_command.c at_main.c wifi_command.c tcpip_func.c tcpip_command.c \
+		
+	VPATH += at/at_main \
+			at/at_server \
+			at/basic_command \
+			at/tcpip_command \
+			at/wifi_command \
+
+		
+	INCPATHS += at/at_main \
+			at/at_server \
+			at/basic_command \
+			at/tcpip_command \
+			at/wifi_command \
+            at \
+			
+	ifeq ($(CONFIG_BLE_EMB_PRESENT),y)
+		CSRCS +=  ble_command.c
+		VPATH += at/ble_command 
+		INCPATHS += at/ble_command 
+	endif
+
+	ifeq ($(CONFIG_MQTT),y)
+		CSRCS +=  mqtt_command.c
+		VPATH += at/mqtt_command 
+		INCPATHS += at/mqtt_command 
+	endif	
+endif

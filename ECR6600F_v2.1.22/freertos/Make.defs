@@ -1,0 +1,13 @@
+override TOPDIR:=$(shell realpath --relative-to=$(CURDIR) $(TOPDIR))
+override OUTPUTDIR:=$(shell realpath --relative-to=$(CURDIR) $(OUTPUTDIR))
+override BOARD_DIR:=$(shell realpath --relative-to=$(CURDIR) $(BOARD_DIR))
+override GENERATED_DIR:=$(shell realpath --relative-to=$(CURDIR) $(GENERATED_DIR))
+
+include ${GENERATED_DIR}/.config
+include $(TOPDIR)/scripts/Config.mk
+include $(TOPDIR)/scripts/CMarcoDefine.mk
+#include $(TOPDIR)/arch/${CONFIG_CPU_ARCH}/Toolchain.defs
+include $(TOPDIR)/arch/andes/Toolchain.defs
+
+
+

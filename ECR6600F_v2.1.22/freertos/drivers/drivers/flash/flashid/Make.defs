@@ -1,0 +1,44 @@
+
+ifeq ($(CONFIG_FLASH_GD),y)
+	CSRCS += flash_GD.c
+endif
+
+ifeq ($(CONFIG_FLASH_PUYA),y)
+	CSRCS += flash_PUYA.c
+endif
+
+ifeq ($(CONFIG_FLASH_ZB),y)
+	CSRCS += flash_ZB.c
+endif
+
+ifeq ($(CONFIG_FLASH_XM),y)
+	CSRCS += flash_XM.c
+endif
+
+ifeq ($(CONFIG_FLASH_XT),y)
+	CSRCS += flash_XT.c
+endif
+
+ifeq ($(CONFIG_FLASH_FM),y)
+	CSRCS += flash_FM.c
+endif
+
+ifeq ($(CONFIG_FLASH_HUABANG),y)
+	CSRCS += flash_HUABANG.c
+endif
+
+ifeq ($(CONFIG_FLASH_EN),y)
+	CSRCS += flash_EN.c
+endif
+
+ifeq ($(CONFIG_FLASH_TH),y)
+	CSRCS += flash_TH.c
+endif
+
+ifeq ($(CONFIG_FLASH_BOYA),y)
+	CSRCS += flash_BOYA.c
+endif
+
+VPATH += :drivers/flash/flashid
+	
+INCPATHS +=drivers/flash/flashid

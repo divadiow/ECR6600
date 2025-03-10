@@ -1,0 +1,4 @@
+
+menuconfig SPI_MASTER
+	bool "SPI_MASTER Driver Support"
+	default y

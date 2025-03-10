@@ -1,0 +1,48 @@
+config CPU_ARCH
+	string "CPU Architecture"
+	default "andes"
+
+choice
+	prompt "Chip CPU Clock Source Selection"
+	default CPU_CLK_SRC_96M
+	
+	config CPU_CLK_SRC_96M
+		bool "CLK_96M"
+	
+	config CPU_CLK_SRC_160M
+		bool "CLK_160M"
+
+	config CPU_CLK_SRC_240M
+		bool "CLK_240M"
+
+	config CPU_CLK_SRC_40m
+		bool "CLK_40M"
+
+endchoice
+
+choice
+	prompt "Chip CPU Clock Frequency Division"
+	default CPU_CLK_FREQ_DIV_0
+	
+	config CPU_CLK_FREQ_DIV_0
+		bool "FREQ_DIV_0"
+	
+	config CPU_CLK_FREQ_DIV_2
+		bool "FREQ_DIV_2"
+
+	config CPU_CLK_FREQ_DIV_4
+		bool "FREQ_DIV_4"
+
+	config CPU_CLK_FREQ_DIV_8
+		bool "FREQ_DIV_8"
+
+endchoice
+
+
+config CPU_ICACHE_ENABLE
+	bool 
+	default y
+
+config CPU_DCACHE_ENABLE
+	bool 
+	default y

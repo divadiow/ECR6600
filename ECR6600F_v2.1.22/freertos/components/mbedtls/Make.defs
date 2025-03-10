@@ -1,0 +1,25 @@
+
+ifeq ($(CONFIG_MBEDTLS),y)
+
+	INCPATHS += $(TOPDIR)/components/mbedtls/mbedtls/include/mbedtls \
+		$(TOPDIR)/components/mbedtls/port/include/mbedtls \
+		$(TOPDIR)/components/mbedtls/mbedtls/include \
+		$(TOPDIR)/components/mbedtls/port/include/mbedtls \
+		$(TOPDIR)/os/freertos/FreeRTOS-Kernel/include \
+		$(TOPDIR)/os/freertos/FreeRTOS-Kernel/portable/ThirdParty/GCC/NDS32_ECR6600 
+	
+	CFLAGS += -DMBEDTLS_CONFIG_FILE='"$(TOPDIR)/components/mbedtls/port/include/mbedtls/trs_config.h"'
+	
+	VPATH += :mbedtls/port
+	VPATH += :mbedtls/mbedtls/library
+
+	CSRCS   += md4.c ecp.c chachapoly.c blowfish.c ssl_ticket.c ecp_curves.c cipher.c pkcs11.c pk.c \
+			entropy_poll.c x509write_csr.c version_features.c\ havege.c nist_kw.c dhm.c rsa.c memory_buffer_alloc.c \
+			md.c md_wrap.c sha256.c ssl_cache.c pkwrite.c ssl_cli.c timing.c asn1parse.c padlock.c version.c gcm.c  \
+			cmac.c md2.c chacha20.c mbedtls_md5.c x509_crt.c ecdh.c asn1write.c aria.c debug.c x509_create.c ecjpake.c  \
+			oid.c ecdsa.c ssl_ciphersuites.c sha512.c base64.c xtea.c aes.c rsa_internal.c cipher_wrap.c arc4.c bignum.c  \
+			pkparse.c ssl_tls.c ssl_srv.c threading.c x509_crl.c camellia.c hkdf.c x509.c certs.c pem.c ssl_cookie.c ccm.c \
+			poly1305.c mbedtls_sha1.c hmac_drbg.c des.c platform.c ctr_drbg.c x509write_crt.c pk_wrap.c entropy.c aesni.c  \
+			pkcs12.c error.c pkcs5.c ripemd160.c platform_util.c x509_csr.c mbedtls_memory.c trs_net_sockets.c trs_hardware_entropy.c
+			
+endif

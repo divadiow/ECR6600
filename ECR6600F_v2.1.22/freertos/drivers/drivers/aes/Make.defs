@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_AES),y)
+
+	CSRCS += aes.c
+
+	VPATH += :drivers/aes
+	INCPATHS +=drivers/aes
+
+endif

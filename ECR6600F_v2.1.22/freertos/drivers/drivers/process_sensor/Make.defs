@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_PROCESS_SENSOR),y)
+
+	CSRCS += process_sensor.c
+
+	VPATH += :drivers/process_sensor
+	INCPATHS +=drivers/process_sensor
+
+endif

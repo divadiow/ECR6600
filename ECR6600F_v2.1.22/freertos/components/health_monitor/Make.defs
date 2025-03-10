@@ -1,0 +1,4 @@
+ifeq ($(CONFIG_HEALTH_MONITOR),y)
+	CSRCS +=  health_monitor.c
+	VPATH += :health_monitor
+endif

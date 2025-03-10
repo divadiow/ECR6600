@@ -1,0 +1,7 @@
+
+ifeq ($(CONFIG_WEB_CONFIG),y)
+	CSRCS += web_config.c
+	VPATH += :web_config
+	INCPATHS += web_config
+	INCPATHS += web_config/include
+endif

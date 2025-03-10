@@ -1,0 +1,19 @@
+ifeq ($(CONFIG_BLE_TUYA_ADAPTER_TEST),y)
+
+        CSRCS += ble_tuya_adapter_test.c
+
+        VPATH += :ble_ctrl
+        
+        INCPATHS += :ble_ctrl
+
+endif
+
+ifeq ($(CONFIG_BLE_TUYA_HCI_ADAPTER_TEST),y)
+
+        CSRCS += tuya_ble_hci_ram.c
+
+        VPATH += :ble_ctrl/tuya_hci_adapt
+        
+        INCPATHS += :ble_ctrl/tuya_hci_adapt
+
+endif

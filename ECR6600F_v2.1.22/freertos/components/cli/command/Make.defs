@@ -1,0 +1,113 @@
+
+ifeq ($(CONFIG_CLI),y)
+	
+	CSRCS += cmd_system.c
+	CSRCS += cmd_common.c
+	
+	ifeq ($(CONFIG_CMD_SHOW),y)
+		CSRCS +=  cmd_show.c
+	endif
+
+	ifeq ($(CONFIG_CMD_READ),y)
+		CSRCS +=  cmd_read.c
+	endif
+
+	ifeq ($(CONFIG_CMD_WRITE),y)
+		CSRCS +=  cmd_write.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_HEALTH_MONITOR), y)
+		CSRCS += cmd_health_monitor.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_ADC_HARDWARE), y)
+		CSRCS += cmd_adc.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_BLE), y)
+		CSRCS += cmd_ble.c
+	endif
+	
+	ifeq ($(CONFIG_BLE_EMB_PRESENT),y)
+		ifeq ($(CONFIG_MULTIPLEX_UART),y)
+			CSRCS += cmd_ble_amt_cli.c
+			INCPATHS += ../PS/ble/module/rwip/api
+			INCPATHS += ../PS/ble/ll/api
+			INCPATHS += ../PS/ble/hl/api
+			INCPATHS += ../PS/ble/app/api
+			INCPATHS += ../PS/common/ke/api
+			INCPATHS += ../PS/ble/em/api
+			INCPATHS += ../PS/ble/interface/api
+			INCPATHS += ../include/PS/ble/
+		endif
+	endif
+	
+	ifeq ($(CONFIG_CMD_WIFI), y)
+		CSRCS += cmd_wifi.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_WIFI_AMT_VERSION),y)
+		CSRCS += cmd_wifi_amt_cli.c
+		INCPATHS += ../PS/wifi/ecr6600/ip/lmac/src/amt
+	endif
+	
+	ifeq ($(CONFIG_CMD_WDT),y)
+		CSRCS += cmd_wdt.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_SYSTEM_DEBUG),y)
+		CSRCS += cmd_system_debug.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_SNTP),y)
+		CSRCS += cmd_sntp.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_SMARTCONFIG), y)
+		CSRCS += cmd_smartconfig.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_PSM), y)
+		CSRCS += cmd_psm.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_OTA_SERVICE),y)
+		CSRCS +=  cmd_ota.c		
+	endif
+	
+	ifeq ($(CONFIG_CMD_NV), y)
+		CSRCS += cmd_nv.c
+	endif
+
+	ifeq ($(CONFIG_CMD_IPERF_3),y)
+		CSRCS += cmd_iperf.c
+		INCPATHS += iperf3
+	endif
+
+	ifeq ($(CONFIG_CMD_EFUSE),y)
+		CSRCS += cmd_efuse.c
+	endif
+	
+	ifeq ($(CONFIG_CMD_SDCARD),y)
+		CSRCS += cmd_sdcard.c
+	endif
+			
+	ifeq ($(CONFIG_CMD_LA), y)
+		CSRCS += cmd_la.c
+		INCPATHS += ../PS/wifi/ecr6600/plf/refip/driver/la
+		INCPATHS += ../PS/wifi/ecr6600/plf/refip/compiler
+	endif
+
+	ifeq ($(CONFIG_CMD_HTTPSERVER),y)
+		CSRCS += cmd_httpserver.c
+	endif
+
+	ifeq ($(CONFIG_CMD_MQTT), y)
+		CSRCS += cmd_mqtt.c
+	endif
+
+	VPATH += :cli/command
+	INCPATHS += cli/command
+	INCPATHS += cli/command/include/
+	INCPATHS += ../PS/wifi/common/ke/api
+endif

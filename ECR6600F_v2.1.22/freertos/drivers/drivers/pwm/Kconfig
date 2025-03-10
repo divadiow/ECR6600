@@ -1,0 +1,4 @@
+
+menuconfig PWM
+	bool "PWM Driver Support"
+	default y

@@ -1,0 +1,33 @@
+
+menuconfig LWIP
+	bool "LWIP Component Support"
+	default y
+	select WIRELESS_WPA_SUPPLICANT
+	select SYSTEM_WIFI_CTRL
+	select PHREAD
+	
+menuconfig IPV6
+	bool "LWIP IPV6 Component Support"
+	depends on LWIP
+	default n
+
+if LWIP
+	config LWIP_NAPT
+	bool "lwip napt enable"
+	default n
+
+	config LWIP_MEM_SIZE
+	int "lwip mem size"
+	range 16384 65536
+	default 25892
+
+	config LWIP_TCP_SND_BUF
+	int "lwip tcp snd buf size"
+	range 4096 65536
+	default 5840
+	
+	config LWIP_TCP_WND_BUF
+	int "lwip tcp window size"
+	range 4096 65536
+	default 8760
+endif

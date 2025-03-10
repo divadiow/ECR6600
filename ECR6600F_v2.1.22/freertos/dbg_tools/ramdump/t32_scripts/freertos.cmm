@@ -1,0 +1,50 @@
+
+
+
+SCREEN.ON
+AREA.RESet
+WinPAGE.RESet
+WinCLEAR
+WinPOS 10. 0. 150. 100. 0. 0. W006
+;AREA.view
+
+CD.PEDIT freertos.cmm
+
+; Debugger reset
+
+ PRINT "resetting..."
+ RESet
+
+; Initializing Debugger
+ PRINT "initializing..."
+ SYStem.JtagClock 20MHz
+ SYStem.CPU D1088
+ SYStem.Up
+
+ Register.RESet
+
+
+
+
+data.load.elf D:\inital_v_6600\freertos_dev\tools\20210213_175638\standalone.elf
+
+data.load.binary D:\inital_v_6600\freertos_dev\tools\20210213_175638\ilm.bin 0x10000 /noclear
+data.load.binary D:\inital_v_6600\freertos_dev\tools\20210213_175638\dlm.bin 0x60000 /noclear
+data.load.binary D:\inital_v_6600\freertos_dev\tools\20210213_175638\iram.bin 0x80000 /noclear
+
+
+; initialize RTOS support
+ PRINT "initializing uC/OS-II support..."
+
+ MENU.ReProgram freertos.men      ; load ucos specific menu (ucos.men)
+
+
+ PRINT "load complete."
+ 
+
+ 
+ PRINT "done."
+
+ DODECRYPT   "ENCRYPTDO" ./tcb_process.t32 2
+ 
+ ENDDO

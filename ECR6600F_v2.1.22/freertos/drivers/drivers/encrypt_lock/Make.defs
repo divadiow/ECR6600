@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_ENCRYPT_LOCK),y)
+
+	CSRCS += encrypt_lock.c
+
+	VPATH += :drivers/encrypt_lock
+	INCPATHS +=drivers/encrypt_lock
+
+endif

@@ -1,0 +1,15 @@
+
+
+ifeq ($(CONFIG_NV),y)
+
+	CSRCS += ef_env.c easyflash.c ef_iap.c ef_log.c ef_utils.c
+	VPATH += :nv/src 
+	INCPATHS += nv/src
+	
+	CSRCS += ef_port.c 
+	VPATH += :nv/port
+	INCPATHS += nv/port \
+				$(TOPDIR)/os/freertos/FreeRTOS-Kernel/include \
+				$(TOPDIR)/os/freertos/FreeRTOS-Kernel/portable/ThirdParty/GCC/NDS32_ECR6600 
+
+endif

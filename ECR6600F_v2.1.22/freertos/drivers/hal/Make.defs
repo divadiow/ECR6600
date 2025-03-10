@@ -1,0 +1,8 @@
+
+	CSRCS += hal_uart.c hal_pwm.c hal_timer.c \
+			hal_rtc.c hal_flash.c hal_gpio.c hal_wdt.c \
+			hal_system.c hal_efuse.c hal_aes.c hal_hash.c\
+			hal_trng.c hal_adc.c
+
+	VPATH += :hal
+	INCPATHS +=hal

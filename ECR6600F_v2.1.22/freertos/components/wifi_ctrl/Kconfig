@@ -1,0 +1,44 @@
+
+menuconfig SYSTEM_WIFI_CTRL
+	bool "System wifi control Component Support"
+	default y
+
+if SYSTEM_WIFI_CTRL
+	choice
+	prompt "set wifi log level"
+	default WIFI_LOG_LEVEL_DEBUG
+
+	config WIFI_LOG_LEVEL_DEBUG
+	bool "debug"
+	
+	config WIFI_LOG_LEVEL_INFO
+	bool "info"
+
+	config WIFI_LOG_LEVEL_WARN
+	bool "warnning"
+
+	config WIFI_LOG_LEVEL_ERROR
+	bool "error"
+
+	config WIFI_LOG_LEVEL_RAW
+	bool "raw"
+
+	config WIFI_LOG_LEVEL_NONE
+	bool "none"
+	endchoice
+
+	config WIFI_USER_RECV_BUF_SIZE
+	int "wifi user recv buf max size"
+	range 32768 102400
+	default 65536
+
+	config WIFI_DRV_RECV_BUF_SIZE
+	int "wifi driver recv buf max size"
+	range 4096 131072
+	default 12288
+
+	config WIFI_AMPDU_TX_CNT
+	int "wifi amsdu tx cnt"
+	range 1 32
+	default 3
+endif

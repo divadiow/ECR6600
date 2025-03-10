@@ -1,0 +1,159 @@
+###########################################
+#
+#			cross toolchains
+#
+###########################################
+
+
+GCC_PATH ?= $(patsubst "%",%,$(CONFIG_GCC_TOOLCHAIN_PATH))
+CROSS_COMPILE:=nds32le-elf-
+
+CROSSDEV = $(GCC_PATH)$(CROSS_COMPILE)
+
+# Default toolchain
+
+CC = $(CROSSDEV)gcc
+CXX = $(CROSSDEV)g++
+CPP = $(CROSSDEV)gcc -E -P -x c
+LD = $(CROSSDEV)ld
+STRIP = $(CROSSDEV)strip --strip-unneeded
+AR = $(CROSSDEV)ar rcs
+NM = $(CROSSDEV)nm
+OBJCOPY = $(CROSSDEV)objcopy
+OBJDUMP = $(CROSSDEV)objdump
+READELF = $(CROSSDEV)readelf
+
+
+###########################################
+#
+#			cross toolchains
+#
+###########################################
+MAXOPTIMIZATION := $(patsubst "%",%,$(CONFIG_OPTION_ARCHOPTIMIZATION))
+
+
+###########################################
+#
+#			include path
+#
+###########################################
+ARCHINCLUDES += -include nds32_intrinsic.h  -include $(GENERATED_DIR)/config.h
+
+ARCHINCLUDES += -I "${TOPDIR}/arch/${CONFIG_CPU_ARCH}/include" -I "$(BOARD_DIR)/../common/include" -I "$(GENERATED_DIR)" 
+
+ifeq ($(CONFIG_LWIP),y)
+	ARCHINCLUDES += -I "${TOPDIR}/components/lwip/lwip-2.1.0/src/include" -I "${TOPDIR}/components/lwip/contrib/port"
+endif
+	ARCHINCLUDES += $(foreach incpath,$(shell find ${TOPDIR}/include -type d),-I "$(incpath)")
+
+ifneq (${EXTRA_SDK_DIR},)
+	ARCHINCLUDES += $(foreach incpath,$(shell find ${EXTRA_SDK_DIR}/include -type d),-I "$(incpath)")
+endif
+
+ifneq ($(EXTRA_OS_ADAPT_DIR),)
+	ARCHINCLUDES += $(foreach incpath,$(shell find ${EXTRA_OS_ADAPT_DIR}/include -type d),-I "$(incpath)")
+endif
+
+ifeq ($(CONFIG_ECR_BLE),y)
+	ARCHINCLUDES += -I "${TOPDIR}/PS/ble/include/$(patsubst "%",%,$(CONFIG_BLE_PRODUCT))/reg/fw"
+endif 
+
+ifeq ($(CONFIG_ECR6600_WIFI),y)
+	ARCHINCLUDES += -I "$(BOARD_DIR)/../common/include/$(patsubst "%",%,$(CONFIG_WIFI_PLATFORM))" -I "$(BOARD_DIR)/../common/include/$(patsubst "%",%,$(CONFIG_WIFI_PLATFORM))/$(patsubst "%",%,$(CONFIG_WIFI_PHY_TYPE))"
+endif 
+
+ARCHINCLUDES += -I "${TOPDIR}/PS/wifi/ecr6600/ip/lmac/src/rwnx"
+ARCHINCLUDES += -I "${TOPDIR}/PS/wifi/rf/ecr6600/src"
+
+###########################################
+#
+#			version number
+#
+###########################################
+
+REL_V ?= 1.0.0
+SDK_V ?= v2.1.22
+
+CMARCODEFINES+=-D__RELEASE_VERSION='"relv$(REL_V)"'
+CMARCODEFINES+=-DSDK_VERSION='"ECR6600F_$(SDK_V)"'
+
+###########################################
+#
+#			default MAC
+#
+###########################################
+CMARCODEFINES+=-DMAC_ADDR_STANDALONE='"00:06:06:00:00:00"'
+
+###########################################
+#
+#			prompt symbol
+#
+###########################################
+CMARCODEFINES+=-DPROMPT_SYMBOL='"$(notdir $(BOARD_DIR))"'
+
+###########################################
+#
+#			cc flags
+#
+###########################################
+
+
+
+ARCHCFLAGS =  -fmessage-length=0 -mcmodel=large -std=gnu99 $(MAXOPTIMIZATION) 
+# ARCHOPTIMIZATION = -fno-omit-frame-pointer -ffunction-sections -fdata-sections  -g 
+ARCHOPTIMIZATION = -ffunction-sections -fdata-sections  -g 
+
+ARCHWARNINGS := -Wall
+ifeq ($(CONFIG_BUILD_WARNING_NONE),y)
+ARCHWARNINGS := -w
+endif
+ARCHWARNINGS += -Werror
+ARCHWARNINGS += -Wno-strict-aliasing 
+
+CFLAGS +=  ${ARCHCFLAGS} ${ARCHOPTIMIZATION} ${ARCHWARNINGS} ${ARCHINCLUDES} ${CMARCODEFINES}
+
+ifeq ($(CONFIG_OPTION_SAVE_TEMPS),y)
+CFLAGS += --save-temps 
+endif
+###########################################
+#
+#			as flags
+#
+###########################################
+
+AFLAGS = -I "${TOPDIR}/arch/${CONFIG_CPU_ARCH}/include" -I "$(BOARD_DIR)/../common/include" -I "$(GENERATED_DIR)" -include $(GENERATED_DIR)/config.h
+
+###########################################
+#
+#			XIP_ADDR
+#
+###########################################
+ifdef XIP_ADDR
+AFLAGS += -DXIP_ADDR_OFFSET=$(XIP_ADDR)
+else
+XIP_ADDR = 0x7000
+endif
+
+###########################################
+#
+#			link flags
+#
+###########################################
+LDSTARTGROUP:=-Wl,--whole-archive
+
+LDENDGROUP:=-Wl,--no-whole-archive
+
+
+LDSCRIPT = $(GENERATED_DIR)/ld.script
+ARCHSCRIPT = -T$(LDSCRIPT)
+
+LDFLAGS += -nostartfiles -nostdlib -Wl,--gc-sections -ffunction-sections -fdata-sections -fno-delete-null-pointer-checks -mcmodel=large $(MAXOPTIMIZATION) 
+
+
+###########################################
+#
+#			Board-specific flags
+#
+###########################################
+
+-include ${BOARD_DIR}/Compile.mk

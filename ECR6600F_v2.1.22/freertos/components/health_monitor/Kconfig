@@ -1,0 +1,16 @@
+
+menuconfig HEALTH_MONITOR
+	bool "task health monitor Support"
+	depends on WDT
+	default y
+
+	if HEALTH_MONITOR
+		config HEALTH_MON_TASK_MAX_NUM
+		int "health monitor support max task"
+		range 1 32
+		default 16		
+
+		config HEALTH_MON_DEBUG
+		bool "reset when exception"
+		default n		
+	endif

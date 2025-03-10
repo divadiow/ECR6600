@@ -1,0 +1,5 @@
+
+menuconfig HASH
+	bool "HASH Driver Support"
+	select ENCRYPT_LOCK
+	default y

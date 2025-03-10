@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_HASH),y)
+
+	CSRCS += hash.c
+
+	VPATH += :drivers/hash
+	INCPATHS +=drivers/hash
+
+endif

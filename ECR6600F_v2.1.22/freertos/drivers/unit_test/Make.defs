@@ -1,0 +1,68 @@
+
+ifeq ($(CONFIG_DRV_UNIT_TEST),y)
+    ifeq ($(CONFIG_DRV_UNIT_TEST_I2S),y)
+	CSRCS += unit_test_i2s.c
+    endif
+
+    ifeq ($(CONFIG_DRV_UNIT_TEST_TIMER),y)
+        CSRCS += unit_test_timer.c
+    endif
+	
+    ifeq ($(CONFIG_DRV_UNIT_TEST_RTC),y)
+        CSRCS += unit_test_rtc.c
+    endif
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_FLASH),y)
+        CSRCS += unit_test_flash.c
+    endif
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_GPIO),y)
+        CSRCS += unit_test_gpio.c
+    endif
+	
+	ifeq ($(CONFIG_DRV_UNIT_TEST_EFUSE),y)
+        CSRCS += unit_test_efuse.c
+    endif
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_UART),y)
+        CSRCS += unit_test_uart.c
+    endif
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_PWM),y)
+        CSRCS += unit_test_pwm.c
+    endif	
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_AES),y)
+        CSRCS += unit_test_aes.c
+    endif	
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_HASH),y)
+        CSRCS += unit_test_hash.c
+    endif	
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_ECC),y)
+        CSRCS += unit_test_ecc.c
+    endif
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_TRNG),y)
+        CSRCS += unit_test_trng.c
+    endif	
+
+	ifeq ($(CONFIG_DRV_UNIT_TEST_WDT),y)
+        CSRCS += unit_test_wdt.c
+    endif
+	
+	ifeq ($(CONFIG_DRV_UNIT_TEST_ADC),y)
+        CSRCS += unit_test_adc.c
+    endif	
+	
+    ifeq ($(CONFIG_DRV_UNIT_TEST_SPI),y)
+            CSRCS += unit_test_spi.c
+    endif	
+	
+	ifeq ($(CONFIG_DRV_UNIT_TEST_PROCESS_SENSOR),y)
+        CSRCS += unit_test_process_sensor.c
+    endif
+endif
+    VPATH += :unit_test
+    INCPATHS +=unit_test

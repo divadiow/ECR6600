@@ -1,0 +1,4 @@
+CSRCS += os_psram_mem.c
+VPATH += :os_psram
+
+

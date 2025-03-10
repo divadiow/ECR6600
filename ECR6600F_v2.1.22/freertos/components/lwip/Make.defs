@@ -1,0 +1,52 @@
+ifeq ($(CONFIG_LWIP),y)
+
+	CSRCS += sys_arch.c
+	
+	VPATH += :lwip/contrib/port
+	
+	INCPATHS += lwip/contrib/port \
+				lwip/contrib/port/arch \
+				lwip/contrib/port/netif
+
+	CFLAGS += -DSTACK_LWIP
+
+	ifeq ($(CONFIG_LWIP_NAPT), y)
+	CFLAGS += -DENABLE_LWIP_NAPT
+	endif
+
+	CSRCS += ip4.c ip4_frag.c ip4_addr.c def.c dns.c inet_chksum.c ip.c stats.c \
+		autoip.c dhcp.c etharp.c icmp.c igmp.c raw.c  timeouts.c sys.c tcp.c \
+		tcp_in.c tcp_out.c udp.c mem.c memp.c netif.c pbuf.c  init.c \
+		api_lib.c api_msg.c err.c sockets.c tcpip.c ethernet.c netbuf.c netdb.c netifapi.c \
+		ping.c dhcpserver.c napt.c\
+	
+	ifeq ($(CONFIG_IPV6),y)
+		CSRCS += dhcp6.c ethip6.c icmp6.c inet6.c ip6.c ip6_addr.c ip6_frag.c mld6.c nd6.c ping6.c
+	endif
+	
+	VPATH += 	:lwip/lwip-2.1.0/src \
+			:lwip/lwip-2.1.0/src/netif \
+			:lwip/lwip-2.1.0/src/core \
+			:lwip/lwip-2.1.0/src/api \
+			:lwip/lwip-2.1.0/src/core/ipv4 \
+            :lwip/lwip-2.1.0/src/apps/ping \
+			:lwip/lwip-2.1.0/src/apps/dhcpserver \
+			
+	ifeq ($(CONFIG_IPV6),y)
+		VPATH += :lwip/lwip-2.1.0/src/core/ipv6 
+	endif
+
+		
+	INCPATHS += lwip/lwip-2.1.0/src \
+			lwip/lwip-2.1.0/src/netif \
+			lwip/lwip-2.1.0/src/api \
+			lwip/lwip-2.1.0/src/core \
+			lwip/lwip-2.1.0/src/core/ipv4 \
+			$(TOPDIR)/os/freertos/FreeRTOS-Kernel/include \
+			$(TOPDIR)/os/freertos/FreeRTOS-Kernel/portable/ThirdParty/GCC/NDS32_ECR6600 \
+			
+	ifeq ($(CONFIG_IPV6),y)
+		INCPATHS += lwip/lwip-2.1.0/src/core/ipv6 
+	endif
+			
+endif

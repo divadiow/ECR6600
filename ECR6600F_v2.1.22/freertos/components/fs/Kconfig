@@ -1,0 +1,5 @@
+
+menuconfig FATFS
+	bool "FATFS Component Support"
+	select SDCARD
+	default n

@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_I2S),y)
+
+	CSRCS += i2s.c
+
+	VPATH += :drivers/i2s
+	INCPATHS +=drivers/i2s
+
+endif

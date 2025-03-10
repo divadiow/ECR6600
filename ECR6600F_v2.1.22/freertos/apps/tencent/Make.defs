@@ -1,0 +1,101 @@
+ifeq ($(CONFIG_TENCENT_CLOUD),y)
+
+TENCENT_CLOUD_PATH = tencent
+TENCENT_CLOUD_WIFI_SDK = wifi_sdk
+TENCENT_CLOUD_PLATFORM_PATH = wifi_sdk/platform
+TENCENT_CLOUD_SDK_PATH = wifi_sdk/sdk_src
+TENCENT_CLOUD_ADAPT = wifi_sdk/adapt
+TENCENT_CLOUD_BLE = ble_sdk
+
+VPATH += :$(TENCENT_CLOUD_PATH)
+
+INCPATHS += $(TENCENT_CLOUD_PATH)/wifi_sdk/include \
+            $(TENCENT_CLOUD_PATH)/wifi_sdk/include/exports \
+            $(TENCENT_CLOUD_PATH)/wifi_sdk/sdk_src/internal_inc \
+            $(TENCENT_CLOUD_PATH)/wifi_sdk/adapt/include \
+            $(TOPDIR)/components/mbedtls/mbedtls/include \
+            $(TOPDIR)/components/cjson \
+
+
+CSRCS += $(TENCENT_CLOUD_PLATFORM_PATH)/HAL_Device_freertos.c \
+         $(TENCENT_CLOUD_PLATFORM_PATH)/HAL_DTLS_mbedtls.c \
+         $(TENCENT_CLOUD_PLATFORM_PATH)/HAL_OS_freertos.c \
+         $(TENCENT_CLOUD_PLATFORM_PATH)/HAL_TCP_lwip.c \
+         $(TENCENT_CLOUD_PLATFORM_PATH)/HAL_Timer_freertos.c \
+         $(TENCENT_CLOUD_PLATFORM_PATH)/HAL_TLS_mbedtls.c \
+         $(TENCENT_CLOUD_PLATFORM_PATH)/HAL_UDP_lwip.c
+
+CSRCS += $(TENCENT_CLOUD_SDK_PATH)/asr_client.c \
+         $(TENCENT_CLOUD_SDK_PATH)/data_template_action.c \
+         $(TENCENT_CLOUD_SDK_PATH)/data_template_client.c \
+         $(TENCENT_CLOUD_SDK_PATH)/data_template_client_common.c \
+         $(TENCENT_CLOUD_SDK_PATH)/data_template_client_json.c \
+         $(TENCENT_CLOUD_SDK_PATH)/data_template_client_manager.c \
+         $(TENCENT_CLOUD_SDK_PATH)/data_template_event.c \
+         $(TENCENT_CLOUD_SDK_PATH)/device_bind.c \
+         $(TENCENT_CLOUD_SDK_PATH)/dynreg.c \
+         $(TENCENT_CLOUD_SDK_PATH)/json_parser.c \
+         $(TENCENT_CLOUD_SDK_PATH)/json_token.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client_common.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client_connect.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client_net.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client_publish.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client_subscribe.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client_unsubscribe.c \
+         $(TENCENT_CLOUD_SDK_PATH)/mqtt_client_yield.c \
+         $(TENCENT_CLOUD_SDK_PATH)/network_interface.c \
+         $(TENCENT_CLOUD_SDK_PATH)/network_socket.c \
+         $(TENCENT_CLOUD_SDK_PATH)/network_tls.c \
+         $(TENCENT_CLOUD_SDK_PATH)/ota_client.c \
+         $(TENCENT_CLOUD_SDK_PATH)/ota_fetch.c \
+         $(TENCENT_CLOUD_SDK_PATH)/ota_lib.c \
+         $(TENCENT_CLOUD_SDK_PATH)/ota_mqtt.c \
+         $(TENCENT_CLOUD_SDK_PATH)/qcloud_iot_ca.c \
+         $(TENCENT_CLOUD_SDK_PATH)/qcloud_iot_device.c \
+         $(TENCENT_CLOUD_SDK_PATH)/qcloud_iot_log.c \
+         $(TENCENT_CLOUD_SDK_PATH)/resource_client.c \
+         $(TENCENT_CLOUD_SDK_PATH)/service_mqtt.c \
+         $(TENCENT_CLOUD_SDK_PATH)/string_utils.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_aes.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_base64.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_getopt.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_hmac.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_httpc.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_list.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_md5.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_ringbuff.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_sha1.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_timer.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_url_download.c \
+         $(TENCENT_CLOUD_SDK_PATH)/utils_url_upload.c
+
+CSRCS += $(TENCENT_CLOUD_ADAPT)/src/ecr_qcloud_main.c \
+         $(TENCENT_CLOUD_ADAPT)/src/ecr_qcloud_softap.c \
+         $(TENCENT_CLOUD_ADAPT)/src/ecr_qcloud_led.c \
+         $(TENCENT_CLOUD_ADAPT)/src/ecr_qcloud_led_driver.c \
+         $(TENCENT_CLOUD_ADAPT)/src/ecr_qcloud_ota.c \
+         $(TENCENT_CLOUD_ADAPT)/src/ecr_qcloud_wifi_log_handler.c \
+         $(TENCENT_CLOUD_ADAPT)/src/ecr_qcloud_power_reset.c \
+
+ifeq ($(CONFIG_BLE_TENCENT_ADAPTER),y)
+INCPATHS += $(TENCENT_CLOUD_PATH)/ble_sdk/config \
+            $(TENCENT_CLOUD_PATH)/ble_sdk/inc \
+            $(TENCENT_CLOUD_PATH)/ble_sdk/src/internal_inc \
+            $(TENCENT_CLOUD_PATH)/ble_sdk/adapter/inc \
+            
+CSRCS += $(TENCENT_CLOUD_BLE)/src/core/ble_qiot_llsync_data.c \
+         $(TENCENT_CLOUD_BLE)/src/core/ble_qiot_llsync_device.c \
+         $(TENCENT_CLOUD_BLE)/src/core/ble_qiot_llsync_event.c \
+         $(TENCENT_CLOUD_BLE)/src/core/ble_qiot_llsync_ota.c \
+         $(TENCENT_CLOUD_BLE)/src/core/ble_qiot_service.c \
+         $(TENCENT_CLOUD_BLE)/src/utils/ble_qiot_utils_crc.c \
+         $(TENCENT_CLOUD_BLE)/src/utils/ble_qiot_utils_log.c \
+         $(TENCENT_CLOUD_BLE)/lib/qcloud_iot_c_sdk/platform/HAL_BTCombo_config.c \
+         $(TENCENT_CLOUD_BLE)/lib/qcloud_iot_c_sdk/platform/HAL_Wifi_api.c \
+         $(TENCENT_CLOUD_BLE)/adapter/src/qiot_netcfg.c \
+         $(TENCENT_CLOUD_BLE)/adapter/src/qiot_adapter.c \
+         
+endif
+
+endif

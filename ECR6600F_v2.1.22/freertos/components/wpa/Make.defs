@@ -1,0 +1,33 @@
+ifneq ($(CONFIG_WIRELESS_WPA_SUPPLICANT),)
+	# wpa3 sae
+	ifeq ($(CONFIG_WIRELESS_WPA3_SUPPORT),y)
+		INCPATHS += $(TOPDIR)/components/mbedtls/mbedtls/include/mbedtls \
+			$(TOPDIR)/components/mbedtls/port/include/mbedtls \
+			$(TOPDIR)/components/mbedtls/mbedtls/include \
+		
+		CONFIG_SAE=y
+		CONFIG_IEEE80211W=y	
+	endif
+	
+	# IEEE802.11 Wpa Supplicant
+
+	WPA_SUPP_ROOT   = $(TOPDIR)/components/wpa
+	WPA_SUPP_PATH   = $(shell find $(WPA_SUPP_ROOT) -type d)
+	include  $(TOPDIR)/components/wpa/wpa_supplicant/FreeRTOS_6600.config
+	include  $(TOPDIR)/components/wpa/wpa_supplicant/FreeRTOS_6600.make
+	
+	CFLAGS += -DINCLUDE_STANDALONE
+			
+	
+	CSRCS += $(notdir $(WPA_SUPP_CSRCS)) stub.c
+			
+
+	VPATH += $(addprefix :,$(WPA_SUPP_PATH))
+	#INCPATHS += $(WPA_SUPP_PATH)
+	INCPATHS += $(WPA_SUPP_ROOT)/src $(WPA_SUPP_ROOT)/include $(WPA_SUPP_ROOT)/src/utils 
+	INCPATHS += $(TOPDIR)/PS/wifi/ecr6600/modules/net_al/ $(TOPDIR)/PS/wifi/ecr6600/modules/mac/src
+	INCPATHS += $(TOPDIR)/PS/wifi/ecr6600/ip/lmac/src/rwnx/ $(TOPDIR)/PS/wifi/ecr6600/modules/fhost/src
+	INCPATHS += $(TOPDIR)/PS/wifi/ecr6600/modules/rtos/src $(TOPDIR)/PS/wifi/ecr6600/modules/dbg/src
+	INCPATHS += $(TOPDIR)/PS/wifi/common/include $(TOPDIR)/PS/wifi/common/co/api
+
+endif

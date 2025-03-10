@@ -1,0 +1,14 @@
+ifeq ($(CONFIG_HTTPSERVER),y)
+	CSRCS += src/httpd_main.c
+	CSRCS += src/http_parser.c
+	CSRCS += src/httpd_parse.c
+	CSRCS += src/httpd_sess.c
+	CSRCS += src/httpd_txrx.c
+	CSRCS += src/httpd_uri.c
+	CSRCS += src/httpd_ws.c
+	CSRCS += src/util/http_sock.c
+
+	VPATH += :http_server
+
+	INCPATHS += $(TOPDIR)/components/lwip/lwip-2.1.0/src/include/compat/posix/
+endif

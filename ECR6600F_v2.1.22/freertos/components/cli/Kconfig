@@ -1,0 +1,8 @@
+
+menuconfig CLI
+	bool "CLI Component Support"
+	default y
+	
+if CLI
+	source "components/cli/command/Kconfig"
+endif

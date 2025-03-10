@@ -1,0 +1,21 @@
+#ifndef __LD_SCRIPT_H__
+#define __LD_SCRIPT_H__
+
+#define ILM_TEXT_START		0x00010000
+#define ILM_TEXT_LEN		192K
+
+#define DLM_DATA_START		0x00060000
+#define DLM_DATA_LEN		128K
+
+#define IRAM_SHARED_START	0x00080000
+#define IRAM_SHARED_LEN		180K
+
+#define MACHWMIB_MEM_START  0x000ad000
+#define MACHWMIN_MEM_LEN	4K
+
+
+#define FLASH_XIP_START 	0x00800000
+#define FLASH_XIP_LEN		4M
+
+
+#endif //__LD_SCRIPT_H__

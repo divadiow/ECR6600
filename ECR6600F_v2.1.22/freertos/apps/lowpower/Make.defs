@@ -1,0 +1,5 @@
+ifeq ($(CONFIG_PSM_DEMO_APP), y)
+	CSRCS += psm_demo_app.c
+endif
+	VPATH += :lowpower
+    INCPATHS +=lowpower

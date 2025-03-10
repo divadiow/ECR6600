@@ -1,0 +1,4 @@
+
+menuconfig ADC
+	bool "ADC Driver Support"
+	default y

@@ -1,0 +1,25 @@
+
+ifeq ($(CONFIG_SYSTEM_WIFI_CTRL),y)
+
+	CSRCS += system_network.c system_wifi.c event_default_handlers.c event_loop.c system_lwip.c wifi_sniffer.c wifi_conn.c wifi_config.c
+
+	VPATH += :wifi_ctrl
+
+	CFLAGS += -DLWIP_PING
+
+	INCPATHS += $(TOPDIR)/include/components/wifi_crtl \
+				$(TOPDIR)/components/lwip/lwip-2.1.0/src \
+				$(TOPDIR)/components/lwip/lwip-2.1.0/src/include \
+				$(TOPDIR)/components/wpa/src \
+				$(TOPDIR)/components/wpa/src/common \
+				$(TOPDIR)/PS/wifi/ecr6600/modules \
+				$(TOPDIR)/apps/spi_service/comm
+else
+	CSRCS += wifi_config.c
+
+	VPATH += :wifi_ctrl
+
+	INCPATHS += $(TOPDIR)/include/components/wifi_crtl \
+				$(TOPDIR)/PS/wifi/common/include \
+
+endif

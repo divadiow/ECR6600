@@ -1,0 +1,77 @@
+
+
+menu "Driver UNIT TEST Support"
+
+config DRV_UNIT_TEST
+    bool "driver unit test"
+    default n
+
+if DRV_UNIT_TEST
+
+    config DRV_UNIT_TEST_I2S
+        bool "driver_i2s unit test"
+        default n
+
+    config DRV_UNIT_TEST_TIMER
+        bool "driver_timer unit test"
+        default n
+	
+    config DRV_UNIT_TEST_RTC
+    	depends on SNTP
+        bool "driver_rtc unit test"
+        default n
+		
+	config DRV_UNIT_TEST_FLASH
+        bool "driver_flash unit test"
+        default n
+
+    config DRV_UNIT_TEST_GPIO
+        bool "driver_gpio unit test"
+        default n
+
+    config DRV_UNIT_TEST_EFUSE
+        bool "driver_efuse unit test"
+        default n
+    
+    config DRV_UNIT_TEST_UART
+        bool "driver_uart unit test"
+        default n
+    
+    config DRV_UNIT_TEST_PWM
+        bool "driver_pwm unit test"
+        default n
+
+    config DRV_UNIT_TEST_AES
+        bool "driver_aes unit test"
+        default n
+
+    config DRV_UNIT_TEST_HASH
+        bool "driver_hash unit test"
+        default n
+
+    config DRV_UNIT_TEST_ECC
+        bool "driver_ecc unit test"
+        default n
+
+    config DRV_UNIT_TEST_TRNG
+        bool "driver_trng unit test"
+        default n
+
+    config DRV_UNIT_TEST_WDT
+        bool "driver_wdt unit test"
+        default n
+		
+	config DRV_UNIT_TEST_ADC
+        bool "driver_adc unit test"
+        default n
+	
+	config DRV_UNIT_TEST_SPI
+        bool "driver_spi unit test"
+        default n
+		
+	config DRV_UNIT_TEST_PROCESS_SENSOR
+        bool "driver_process_sensor unit test"
+        default n
+endif
+
+endmenu # menu "Driver UNIT TEST Support"

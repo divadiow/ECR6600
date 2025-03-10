@@ -1,0 +1,4 @@
+
+menuconfig I2C
+	bool "I2C Driver Support"
+	default y

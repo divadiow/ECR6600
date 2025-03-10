@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_PWM),y)
+
+	CSRCS += pwm.c
+
+	VPATH += :drivers/pwm
+	INCPATHS += drivers/pwm
+
+endif

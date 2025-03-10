@@ -1,0 +1,107 @@
+
+menu "FLASH Driver Support"
+
+config FLASH
+	bool "FLASH Driver Support"
+	default y
+
+if FLASH
+choice
+	prompt "SPI MODE Selection"
+	default STANDARD_SPI
+	
+	config STANDARD_SPI
+		bool "Standard spi"
+
+	config DUAL_SPI
+		bool "Dual spi"
+
+	config QUAD_SPI
+		bool "Quad spi"
+endchoice
+
+choice
+	prompt "SPI Clock Frequency Division"
+	default SPI_CLK_DIV_0
+
+	config SPI_CLK_DIV_0
+		bool "FREQ_DIV_0"
+
+	config SPI_CLK_DIV_2
+		bool "FREQ_DIV_2"
+
+	config SPI_CLK_DIV_4
+		bool "FREQ_DIV_4"
+
+	config SPI_CLK_DIV_6
+		bool "FREQ_DIV_6"
+
+	config SPI_CLK_DIV_8
+		bool "FREQ_DIV_8"
+
+	config SPI_CLK_DIV_10
+		bool "FREQ_DIV_10"
+endchoice
+
+menu "FLASH Manufacturer's Support"
+
+config FLASH_ALL_COMPATIBILITY
+	bool "FLASH all select"
+	default y
+	select FLASH_GD
+	select FLASH_PUYA
+	select FLASH_ZB
+	select FLASH_XM
+	select FLASH_XT
+	select FLASH_FM
+	select FLASH_HUABANG
+	select FLASH_EN
+	select FLASH_TH
+	select FLASH_BOYA
+	#GD25Q80E,GD25Q16E 
+
+config FLASH_GD
+	bool "FLASH_GD"
+	#GD25Q80E,GD25Q16E 
+		
+config FLASH_PUYA
+	bool "FLASH_PUYA"
+	#P25Q80HD,P25Q16H,P25Q16SH,P25Q32H 
+	
+config FLASH_ZB
+	bool "FLASH_ZB"
+	#ZB25VQ80,ZB25VQ16,ZB25VQ32 
+
+config FLASH_XM
+	bool "FLASH_XM"
+	#XM25QH80B,XM25QH16B,XM25QH16C 
+		
+config FLASH_XT
+	bool "FLASH_XT"
+	#XT25F08B,XT25F16B,XT25F16F
+		
+config FLASH_FM
+	bool "FLASH_FM"
+	#FM25QH16B 
+	
+config FLASH_HUABANG
+	bool "FLASH_HUABANG"
+	#W25Q32JV 
+	
+config FLASH_EN
+	bool "FLASH_EN"
+	#EN25Q16B 
+	
+config FLASH_TH
+	bool "FLASH_TH"
+	#TH25Q16HB 
+	
+config FLASH_BOYA
+	bool "FLASH_BOYA"
+	#BY25Q32CS
+	
+endmenu # menu "FLASH Manufacturer's Support"
+
+endif
+
+endmenu # menu "SPI Flash Support"

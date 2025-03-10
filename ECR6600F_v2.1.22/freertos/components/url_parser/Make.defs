@@ -1,0 +1,5 @@
+ifeq ($(CONFIG_URLPARSER),y)
+	CSRCS += url_parser.c
+	VPATH += :url_parser
+	INCPATHS += url_parser
+endif

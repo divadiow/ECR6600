@@ -1,0 +1,376 @@
+config ECR_BLE
+      bool 
+      default y
+
+config BLE_APP_ECR
+      bool 
+      default y
+
+config BLE_APP
+      bool 
+      default y
+
+config COMP_AES
+      bool 
+      default y
+
+config COMP_DEBUG_BLE
+      bool 
+      default y
+
+config COMP_ECC_P256
+      bool 
+      default y
+
+config COMP_H4TL
+      bool 
+      default y
+
+config COMP_RF
+      bool 
+      default y
+
+config COMP_RWIP
+      bool 
+      default y
+
+config BLE_RF_EXTRC
+      bool 
+      default y
+
+config BLE_PRODUCT_BLEFULL
+      bool 
+      default y
+
+config BLE_PRODUCT
+      string 
+      default "ble-full"
+
+config BLE_BUBBLE
+      bool 
+      default y
+
+config BLE_ROLE_ALL
+      bool 
+      default y
+
+config BLE_ROLE
+      string 
+      default "all"
+
+config LE_ACT
+      int 
+      default 3
+
+config LE_CONN
+      int 
+      default 1
+
+config BLE_HCITL
+      bool 
+      default y
+
+config MULTIPLEX_UART
+      bool 
+      default y
+
+config BLE_AHITL
+      bool 
+      default y
+
+config BLE_ATTC
+      bool 
+      default y
+
+config BLE_ATTS
+      bool 
+      default y
+
+config BLE_SEC_CON
+      int 
+      default 32
+
+config BLE_NBPRF
+      int 
+      default 10
+
+config BLE_PROFILES
+      bool 
+      default y
+
+config BLE_PROFILE_DISS
+      bool 
+      default y
+
+config BLE_WLCOEX
+      bool 
+      default y
+
+config BLE_RAL
+      int 
+      default 3
+
+config BLE_HOST_PRESENT
+      bool 
+      default y
+
+config BLE_AHI_PRESENT
+      bool 
+      default y
+
+config BLE_SCH_PRESENT
+      bool 
+      default y
+
+config BLE_RD_PICONET_CLK
+      bool 
+      default y
+
+config ECR6600_WIFI
+      bool 
+      default y
+
+config FULLMASK
+      bool 
+      default y
+
+config WIFI_PRODUCT_FHOST
+      bool 
+      default y
+
+config WIFI_PRODUCT
+      string 
+      default "fhost"
+
+config WIFI_UMAC
+      bool 
+      default y
+
+config WIFI_FHOST
+      bool 
+      default y
+
+config WIFI_PLATFORM_VIRTEX7
+      bool 
+      default y
+
+config WIFI_PLATFORM
+      string 
+      default "virtex7"
+
+config WIFI_VIF
+      int 
+      default 4
+
+config WIFI_STA
+      int 
+      default 8
+
+config WIFI_MAC_VERSION21
+      bool 
+      default y
+
+config WIFI_MAC_VERSION
+      int 
+      default 21
+
+config WIFI_MDM_V30
+      bool 
+      default y
+
+config WIFI_MDM_VERSION
+      int 
+      default 30
+
+config WIFI_IPC_V11
+      bool 
+      default y
+
+config WIFI_IPC_VERSION
+      int 
+      default 11
+
+config WIFI_TXDESC0
+      int 
+      default 4
+
+config WIFI_TXDESC1
+      int 
+      default 64
+
+config WIFI_TXDESC2
+      int 
+      default 4
+
+config WIFI_TXDESC3
+      int 
+      default 64
+
+config WIFI_TXDESC4
+      int 
+      default 4
+
+config WIFI_DPSM
+      bool 
+      default y
+
+config WIFI_UF
+      bool 
+      default y
+
+config WIFI_MON_DATA
+      bool 
+      default y
+
+config WIFI_REC
+      bool 
+      default y
+
+config WIFI_BCN
+      bool 
+      default y
+
+config WIFI_AMSDURX
+      int 
+      default 12
+
+config WIFI_SPC
+      int 
+      default 16
+
+config WIFI_BFMEE
+      bool 
+      default y
+
+config WIFI_BWLEN
+      bool 
+      default y
+
+config WIFI_KEYCFG
+      bool 
+      default y
+
+config WIFI_MESH_VIF
+      int 
+      default 0
+
+config WIFI_MESH_LINK
+      int 
+      default 2
+
+config MESH_PATH
+      int 
+      default 5
+
+config MESH_PROXY
+      int 
+      default 5
+
+config WIFI_P2P
+      int 
+      default 0
+
+config WIFI_MURX
+      bool 
+      default y
+
+config ONLY_HSU
+      bool 
+      default y
+
+config WIFI_HSU
+      int 
+      default 2
+
+config WIFI_CMON
+      bool 
+      default y
+
+config WIFI_MROLE
+      bool 
+      default y
+
+config WIFI_HWSCAN
+      bool 
+      default y
+
+config WIFI_AUTOBCN
+      bool 
+      default y
+
+config WIFI_HE
+      bool 
+      default y
+
+config WIFI_BARX
+      int 
+      default 4
+
+config WIFI_REORDBUF
+      int 
+      default 4
+
+config WIFI_BATX
+      int 
+      default 4
+
+config WIFI_MFP
+      bool 
+      default y
+
+config WIFI_AMT_VERSION
+      bool 
+      default y
+
+config COMP_DEBUG_WIFI
+      bool 
+      default y
+
+config ECR6600_WIFI_DBG_LEVEL0
+      bool 
+      default y
+
+config ECR6600_WIFI_DBG_LEVEL
+      int 
+      default 0
+
+config CRM
+      bool 
+      default y
+
+config IPC_DMA
+      bool 
+      default y
+
+config INTC
+      bool 
+      default y
+
+config IPC_FHOST
+      bool 
+      default y
+
+config WIFIPHY
+      bool 
+      default y
+
+config WIFI_PHY_CUSTOM_RF
+      bool 
+      default y
+
+config WIFI_PHY_TYPE
+      string 
+      default "custom_rf"
+
+config SYSCTRL
+      bool 
+      default y
+
+config TIME
+      bool 
+      default y
+
+config ASIC_RF
+      bool 
+      default y
+

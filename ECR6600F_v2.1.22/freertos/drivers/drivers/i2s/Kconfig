@@ -1,0 +1,4 @@
+
+menuconfig I2S
+	bool "I2S Driver Support"
+	default y

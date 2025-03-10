@@ -1,0 +1,13 @@
+CSRCS += main.c
+
+VPATH += :ecr6600/at
+INCPATHS += ecr6600/at/include \
+			$(TOPDIR)/arch/andes/include \
+			$(TOPDIR)/include/PS/ble/module/nvds \
+			$(TOPDIR)/include/tx \
+			
+ifeq ($(CONFIG_ECR6600_WIFI),y)
+LMAC_SOURCE_DIR = ../PS/wifi/ecr6600/ip/lmac/src/
+INCPATHS+=$(LMAC_SOURCE_DIR)/amt
+endif
+			

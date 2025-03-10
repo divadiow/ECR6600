@@ -1,0 +1,3 @@
+menuconfig HTTP_CLIENT
+	bool "HTTP Client Support"
+	default n
