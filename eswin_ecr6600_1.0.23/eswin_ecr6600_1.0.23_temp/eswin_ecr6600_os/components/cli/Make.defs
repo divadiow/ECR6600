@@ -1,0 +1,15 @@
+
+ifeq ($(CONFIG_CLI),y)
+
+	CSRCS +=  cli.c	cli_trace_stack.c
+
+	CFLAGS += -DUTIL_TRACE_STACK
+	VPATH += :cli
+	INCPATHS +=cli \
+			$(TOPDIR)/drivers/uart \
+			$(TOPDIR)/include/PS/ble/module/nvds \
+			$(TOPDIR)/os/freertos/FreeRTOS-Kernel/include \
+			$(TOPDIR)/os/freertos/FreeRTOS-Kernel/portable/ThirdParty/GCC/NDS32_ECR6600 \
+			$(TOPDIR)/components/ble_ctrl $(TOPDIR)/components/ble_ctrl/tuya_hci_adapt \
+
+endif

@@ -1,0 +1,1 @@
+20210506:去除rom固化代码中涉及gp寄存器读写的函数，具体包含：do_printf,do_scanf,isalnum,isalpha,isblank,iscntrl,isdigit,islower,isprint,ispunct,isspace,isupper,iswalpha,iswblank,iswcntrl,isprint,iswspace,putchar,puts,stcasecmp,strtok,strtol_common,strupr,tolower,toupper,towlower,towupper,vprintf,cscanf

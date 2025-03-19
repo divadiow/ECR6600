@@ -1,0 +1,17 @@
+ifeq ($(CONFIG_MQTT),y)
+	INCPATHS += lwip/lwip-2.1.0/src/include/lwip
+	INCPATHS += mbedtls/mbedtls/include
+
+	CSRCS += mqtt_client.c \
+			 mqtt_msg.c \
+			 mqtt_outbox.c \
+			 platform_tr6600.c \
+			 transport.c \
+			 transport_ssl.c \
+			 transport_tcp.c \
+			 transport_ws.c \
+			 mqtt_test.c
+	VPATH += :mqtt
+	INCPATHS += mqtt
+	INCPATHS += mqtt/include
+endif

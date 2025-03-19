@@ -1,0 +1,29 @@
+ifeq ($(CONFIG_WIRELESS_IPERF_3),y)
+	
+	INCPATHS += $(TOPDIR)/components/cjson
+
+	IPERF3_CSRCS = 	iperf.c \
+			dscp.c \
+			iperf_api.c \
+			iperf_client_api.c \
+			iperf_error.c \
+			iperf_locale.c \
+			iperf_sctp.c \
+			iperf_server_api.c \
+			iperf_tcp.c \
+			iperf_udp.c \
+			iperf_util.c \
+			net.c \
+			timer.c \
+			units.c \
+			iperf_time.c \
+			getopt.c
+
+	CSRCS += $(IPERF3_CSRCS)
+
+	CFLAGS += -D__TR_SW__
+
+	VPATH += :iperf3
+	INCPATHS += $(TOPDIR)/components/lwip/lwip-2.1.0/src/include/compat/posix/
+
+endif

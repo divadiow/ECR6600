@@ -1,0 +1,20 @@
+
+CFLAGS += -DCONFIG_DOUBLE_NV \
+		  -D_USE_PSM \
+		  -DINCLUDE_STANDALONE \
+		  -DTUYA_SDK_ADPT \
+		  -D_LED_MANUFACTURE_TEST \
+		  -D_USE_OTA_DIFF \
+		  -DSTACK_LWIP 
+CSRCS += main.c
+
+VPATH += :ecr6600/tuya
+
+INCPATHS += ecr6600/tuya/include \
+			$(TOPDIR)/arch/andes/include \
+			$(TOPDIR)/include/tx \
+
+ifeq ($(CONFIG_ECR6600_WIFI),y)
+LMAC_SOURCE_DIR = ../PS/wifi/ecr6600/ip/lmac/src/
+INCPATHS+=$(LMAC_SOURCE_DIR)/amt
+endif

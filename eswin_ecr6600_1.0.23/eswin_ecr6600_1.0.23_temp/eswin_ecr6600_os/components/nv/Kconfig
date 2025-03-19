@@ -1,0 +1,5 @@
+
+menuconfig NV
+	bool "NV C library Component Support"
+	select FLASH
+	default y

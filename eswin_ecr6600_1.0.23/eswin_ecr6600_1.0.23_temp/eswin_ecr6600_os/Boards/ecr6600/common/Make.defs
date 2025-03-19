@@ -1,0 +1,6 @@
+
+CSRCS += chip_startup.c chip_pin_mux.c chip_clk_ctrl.c chip_config.c release_version.c
+ASRCS += chip_entry.S
+
+VPATH += :ecr6600/common
+INCPATHS += ecr6600/common/include

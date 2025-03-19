@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_ECC),y)
+
+	CSRCS += ecc.c
+
+	VPATH += :drivers/ecc
+	INCPATHS +=drivers/ecc
+
+endif

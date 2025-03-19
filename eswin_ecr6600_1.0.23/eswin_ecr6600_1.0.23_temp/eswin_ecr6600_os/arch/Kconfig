@@ -1,0 +1,90 @@
+comment "Build Setup"
+
+
+config OUTPUT_FORMAT_ELF
+	bool 
+	default n
+	
+	
+config OUTPUT_FORMAT_LIB
+	bool 
+	default n
+
+
+choice
+	prompt "LD Script Selectiong"
+	default LD_SCRIPT_XIP
+
+	config LD_SCRIPT_XIP
+	bool "xip ld script"
+	
+	config LD_SCRIPT_RAM
+	bool "ram ld script"
+endchoice
+
+
+choice
+	prompt "Output Version Selectiong"
+	default OUTPUT_VERSION_STANDALONE_ELF
+
+	config OUTPUT_VERSION_STANDALONE_ELF
+	bool "standalone elf"
+	select OUTPUT_FORMAT_ELF
+	
+	config OUTPUT_VERSION_TRANSPORT_ELF
+	bool "transport elf"
+	select OUTPUT_FORMAT_ELF
+	
+	config OUTPUT_VERSION_LIB
+	bool "lib"
+	select OUTPUT_FORMAT_LIB
+endchoice
+
+
+config OPTION_ARCHOPTIMIZATION
+	string
+	default "-Os"
+	
+	
+config BUILD_WARNING_ALL
+	bool
+	default y
+	
+	
+#menu "Gcc Build Option"
+#
+#	choice
+#		prompt "Parallel Build Thread Number Selection"
+#		default PARALLEL_BUILD_ONE
+#		
+#		config PARALLEL_BUILD_ONE
+#		bool "j1"
+#		
+#		config PARALLEL_BUILD_FOUR
+#		bool "j4"
+#		
+#		config PARALLEL_BUILD_EIGHT
+#		bool "j8"
+#	endchoice
+#
+#	choice
+#		prompt "Build Warning Configuration"
+#		default BUILD_WARNING_ALL
+#		
+#		config BUILD_WARNING_ALL
+#		bool "warning all"
+#		
+#		config BUILD_WARNING_NONE
+#		bool "waring none"
+#	endchoice
+#
+#
+#	config BUILD_WARNING_ALL
+#	bool
+#	default y
+#
+#	config OPTION_ARCHOPTIMIZATION
+#		string
+#		default "-Os"
+#	
+#endmenu

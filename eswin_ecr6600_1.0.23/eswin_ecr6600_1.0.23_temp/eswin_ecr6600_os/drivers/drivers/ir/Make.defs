@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_IR),y)
+
+	CSRCS += ir.c
+
+	VPATH += :drivers/ir
+	
+	INCPATHS +=drivers/ir
+endif

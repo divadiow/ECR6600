@@ -1,0 +1,51 @@
+comment "RTOS Configuration"
+
+#choice
+#	prompt "RTOS Selection"
+#	default FREERTOS
+	
+#	config FREERTOS
+#		bool "freeRTOS"	
+	
+#	config NO_RTOS
+#		bool "none RTOS"
+
+#endchoice
+
+config FREERTOS
+	bool 
+	default y
+
+config RTOS
+	string 
+	default "freertos"
+	
+config CEVA_RTOS
+	bool
+	default n
+
+menu "RTOS Debug Configuration"
+
+config HEAP_BOUNDARY_CHECK	
+	bool "Heap Bounary Check Feature[HEAP_BOUNDARY_CHECK]"
+	default n
+	#depends on FREERTOS
+
+config HEAP_DEBUG
+	bool "Heap Usage Stats"
+	default n
+	#depends on FREERTOS
+config RUNTIME_DEBUG
+	bool "Task Runtime Stats"
+	default n
+	#depends on FREERTOS
+config IRQ_STATS_DEBUG
+	bool "Irq Stats Debug"
+	default y
+	#depends on FREERTOS
+
+config SYSTEM_IRQ
+	bool "System Irq Runtime"
+	default n
+	#depends on FREERTOS
+endmenu

@@ -1,0 +1,12 @@
+
+menuconfig CLI
+	bool "CLI Component Support"
+	default y
+
+menuconfig TUYA_DOORCONTACT
+        bool "tuya door contact Support"
+        default n
+	
+if CLI
+	source "components/cli/command/Kconfig"
+endif

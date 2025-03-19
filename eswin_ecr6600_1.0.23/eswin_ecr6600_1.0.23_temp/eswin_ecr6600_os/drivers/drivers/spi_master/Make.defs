@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_SPI_MASTER),y)
+
+	CSRCS += spi_master.c
+
+	VPATH += :drivers/spi_master
+	
+	INCPATHS +=drivers/spi_master
+endif

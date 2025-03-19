@@ -1,0 +1,62 @@
+
+
+
+
+
+
+
+
+
+
+
+
+#ifndef __CHIP_MEMMAP_H__
+#define __CHIP_MEMMAP_H__
+
+#define MEM_BASE_ILM0					0x00010000
+#define MEM_BASE_ILM1					0x00018000
+#define MEM_BASE_ILM2					0x00020000
+#if defined(CONFIG_LD_SCRIPT_XIP)
+#define MEM_BASE_DLM					0x00060000
+#else
+#define MEM_BASE_DLM					0x00060000
+#endif
+
+#define MEM_BASE_RAM0					0x00080000
+#define MEM_BASE_RAM1					0x000A0000
+
+#define MEM_BASE_PCU					0x00201000
+#define MEM_BASE_RTC					0x00201100
+#define MEM_BASE_SMU_AON				0x00201200
+#define MEM_BASE_GPIO					0x00201300
+#define MEM_BASE_SMU_PD				0x00202000
+#define MEM_BASE_RFC_REG				0x00203000
+#define MEM_BASE_UART0					0x00204000
+#define MEM_BASE_UART1					0x00205000
+#define MEM_BASE_UART2					0x00206000
+#define MEM_BASE_PIT0					0x00207000
+#define MEM_BASE_PIT1					0x00208000
+#define MEM_BASE_WDT					0x00209000
+#define MEM_BASE_I2C					0x0020A000
+#define MEM_BASE_SPI0					0x0020B000
+#define MEM_BASE_SPI1					0x0020C000
+#define MEM_BASE_TRNG					0x0020D000
+#define MEM_BASE_DUMP					0x0020E000
+#define MEM_BASE_EFUSE					0x0020F000
+#define MEM_BASE_IR						0x00210000
+#define MEM_BASE_I2S					0x00280000
+#define MEM_BASE_DMAC					0x00400000
+#define MEM_BASE_ECC					0x00410000
+#define MEM_BASE_AES					0x00420000
+#define MEM_BASE_HASH					0x00430000
+
+#define MEM_BASE_SDIO_SLAVE			0x00440000
+#define MEM_BASE_SDIO_HOST			0x00450000
+
+#define MEM_BASE_XIP					0x00800000
+#define MEM_BASE_PSRAM				0x00c00000
+
+#define MEM_BASE_CACHE					0x40000000
+
+#endif /* __CHIP_MEMMAP_H__ */
+

@@ -1,0 +1,24 @@
+comment "Chip Features"
+
+
+#choice
+#	prompt "Chip Selection"
+#	default ECR6600
+#	config ECR2560
+#		bool "ECR2560"
+#	config ECR6600
+#		bool "ECR6600"
+#endchoice
+config ECR6600
+	bool
+	select CLI
+	default y
+
+
+if ECR6600
+	menu "ECR6600 CHIP Fetures"
+		source "Boards/ecr6600/common/Kconfig"
+	endmenu
+	
+	source "Boards/ecr6600/common/psm/Kconfig"
+endif

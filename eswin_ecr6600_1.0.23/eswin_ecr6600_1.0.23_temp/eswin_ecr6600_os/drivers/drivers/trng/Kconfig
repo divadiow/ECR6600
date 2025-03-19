@@ -1,0 +1,4 @@
+
+config TRNG
+	bool 
+	default y

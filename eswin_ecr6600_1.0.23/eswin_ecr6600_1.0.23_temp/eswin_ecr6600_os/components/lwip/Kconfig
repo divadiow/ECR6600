@@ -1,0 +1,12 @@
+
+menuconfig LWIP
+	bool "LWIP Component Support"
+	default y
+	select WIRELESS_WPA_SUPPLICANT
+	select SYSTEM_WIFI_CTRL
+	select PHREAD
+	
+menuconfig IPV6
+	bool "LWIP IPV6 Component Support"
+	depends on LWIP
+	default n

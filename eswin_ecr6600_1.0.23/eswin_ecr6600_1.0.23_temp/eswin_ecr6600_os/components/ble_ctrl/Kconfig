@@ -1,0 +1,9 @@
+menuconfig BLE_TUYA_ADAPTER_TEST
+        bool "tuya BLE Application interface for test"
+        depends on BLE_PRODUCT_BLEFULL
+        default n 
+
+menuconfig BLE_TUYA_HCI_ADAPTER_TEST
+        bool "TUYA BLE hci interface for test"
+        depends on BLE_EMB_PRESENT
+        default n 

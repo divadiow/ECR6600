@@ -1,0 +1,10 @@
+ifeq ($(CONFIG_FLASH),y)
+
+	CSRCS += flash.c flash_probe.c
+
+	VPATH += :drivers/flash
+	
+	INCPATHS +=drivers/flash
+endif
+
+

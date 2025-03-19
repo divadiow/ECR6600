@@ -1,0 +1,11 @@
+ifeq ($(CONFIG_TRS_TLS),y)
+
+CSRCS +=  trs_tls.c
+
+VPATH += trs-tls
+INCPATHS += trs-tls
+
+endif
+
+
+

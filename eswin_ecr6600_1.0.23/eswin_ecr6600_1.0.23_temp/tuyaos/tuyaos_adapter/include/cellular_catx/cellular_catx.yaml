@@ -1,0 +1,16 @@
+spec:
+  name: cellular_catx
+  version: EMBED_VERSION
+  summary: embed module created by embedded-cli.
+  homepage: YOUR_HOMEPAGE
+  license:
+    type: MIT
+    file: LICENSE
+  author:
+    name: embedCI
+
+    email: embed@tuya.com
+
+  source:
+    git: https://registry.code.tuya-inc.top/ci_tuyaos_kernel_adapter_layer/cellular_catx.git
+    tag: EMBED_VERSION

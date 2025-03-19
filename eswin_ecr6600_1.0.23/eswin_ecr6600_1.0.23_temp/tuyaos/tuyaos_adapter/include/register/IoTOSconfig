@@ -1,0 +1,5 @@
+# Ktuyaconf
+
+config ENABLE_REGISTER
+    bool "ENABLE_REGISTER: support register"
+    default n

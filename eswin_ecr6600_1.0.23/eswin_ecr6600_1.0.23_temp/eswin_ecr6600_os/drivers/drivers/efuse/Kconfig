@@ -1,0 +1,4 @@
+
+config EFUSE
+	bool 
+	default y

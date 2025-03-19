@@ -1,0 +1,12 @@
+
+ifeq ($(CONFIG_SNTP),y)
+	CFLAGS += -DSNTP_SERVER_DNS -DSNTP_MAX_SERVERS=1
+	CSRCS += sntp.c
+	VPATH += :lwip/lwip-2.1.0/src/apps/sntp	
+	INCPATHS += lwip/lwip-2.1.0/src/include/lwip/apps
+
+	CFLAGS += -DLWIP_SNTP
+	CSRCS += sntp_tr.c
+	VPATH += :sntp
+	INCPATHS += sntp
+endif

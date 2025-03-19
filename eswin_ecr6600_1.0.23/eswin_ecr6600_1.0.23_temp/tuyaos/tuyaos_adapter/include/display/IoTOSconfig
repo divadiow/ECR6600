@@ -1,0 +1,6 @@
+# Ktuyaconf
+
+config ENABLE_DISPLAY
+    bool "ENABLE_DISPLAY: support display"
+    default n
+

@@ -1,0 +1,8 @@
+
+CSRCS += arch_cpu.c \
+		arch_irq.c \
+		arch_cache.c
+
+
+VPATH += :andes
+INCPATHS += andes

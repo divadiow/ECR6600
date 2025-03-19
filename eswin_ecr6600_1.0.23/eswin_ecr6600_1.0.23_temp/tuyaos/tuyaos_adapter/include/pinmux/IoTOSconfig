@@ -1,0 +1,14 @@
+# Ktuyaconf
+
+menuconfig ENABLE_PINMUX
+    bool "ENABLE_PINMUX: support pinmux"
+    default n
+
+    if (ENABLE_PINMUX)
+        # pin2func
+        config ENABLE_PIN2FUNC
+            bool "ENABLE_PIN2FUNC: enable tuya pin2func mapping"
+            default n
+    endif
+
+

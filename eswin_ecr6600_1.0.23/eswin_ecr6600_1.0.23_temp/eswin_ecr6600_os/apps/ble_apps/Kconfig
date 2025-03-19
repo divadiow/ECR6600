@@ -1,0 +1,17 @@
+choice 
+	prompt "BLE Test Applications"
+	depends on ECR_BLE && BLE_PRODUCT_BLEFULL
+
+	config BLE_EXAMPLES_NONE
+		bool "no ble examples"
+
+	config BLE_EXAMPLES_NETCFG_SLAVE
+		depends on BLE_PRODUCT_BLEFULL
+		bool "ble netcfg example as slave"
+	
+	config BLE_TUYA_ADAPTER
+		depends on BLE_PRODUCT_BLEFULL
+		bool "ble tuya adapter"
+
+endchoice
+

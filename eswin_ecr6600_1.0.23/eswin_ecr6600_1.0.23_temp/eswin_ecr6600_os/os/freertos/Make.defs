@@ -1,0 +1,24 @@
+ifeq ($(CONFIG_RTOS),"freertos")
+
+	CSRCS += croutine.c\
+		event_groups.c\
+		list.c \
+		queue.c \
+		tasks.c \
+		timers.c \
+		stream_buffer.c
+
+	VPATH += freertos/FreeRTOS-Kernel
+	INCPATHS += freertos/FreeRTOS-Kernel/include
+
+	CSRCS += port.c	debug_core.c dump_core.c
+	ASRCS += irq.S \
+		portasm.S
+
+	VPATH += freertos/FreeRTOS-Kernel/portable/ThirdParty/GCC/NDS32_ECR6600
+	INCPATHS += freertos/FreeRTOS-Kernel/portable/ThirdParty/GCC/NDS32_ECR6600 
+
+	CSRCS += heap_5.c
+	VPATH += freertos/FreeRTOS-Kernel/portable/MemMang
+	
+endif

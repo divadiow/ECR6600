@@ -1,0 +1,6 @@
+ifeq ($(CONFIG_RTOS),"freertos")
+CSRCS += os_hal_freertos.c
+endif
+VPATH += :os_hal
+
+

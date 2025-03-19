@@ -1,0 +1,4 @@
+
+menuconfig SYSTEM_WIFI_CTRL
+	bool "System wifi control Component Support"
+	default y

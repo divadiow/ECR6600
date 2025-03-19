@@ -1,0 +1,10 @@
+
+#menuconfig APP_AT_COMMAND
+#    bool
+#	if APP_AT_COMMAND
+#		config TRS_TLS
+#			bool
+#			default y if APP_AT_COMMAND
+#			default n
+#	endif
+#			

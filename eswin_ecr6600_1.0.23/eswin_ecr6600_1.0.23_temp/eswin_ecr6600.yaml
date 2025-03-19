@@ -1,0 +1,15 @@
+spec:
+  name: eswin_ecr6600
+  version: 0.0.1-beta.1
+  summary: embed module created by embedded-cli.
+  homepage: YOUR_HOMEPAGE
+  license:
+    type: MIT
+    file: LICENSE
+  author:
+    name: embedCI
+    email: embed@tuya.com
+  source:
+    git: https://registry.code.tuya-inc.top/hardware_wifi_soc/eswin_ecr6600.git
+    tag: 0.0.1-beta.1
+

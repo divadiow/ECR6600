@@ -1,0 +1,17 @@
+ifeq ($(CONFIG_OTA),y)
+
+CSRCS +=  ota.c http_ota.c
+
+VPATH += :ota
+INCPATHS += ota/include
+
+
+ifeq ($(CONFIG_OTA_LOCAL),y)
+	CSRCS += local_ota.c
+endif
+
+
+ifeq ($(CONFIG_OTA_SERVICE),y)
+	CSRCS += mqtt_ota.c
+endif
+endif

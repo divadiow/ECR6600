@@ -1,0 +1,46 @@
+# Ktuyaconf
+
+config GPRS_GW
+    bool
+    default n
+
+config TUYA_CAT1
+    bool
+    default n
+
+menuconfig ENABLE_CELLULAR
+    bool "ENABLE_CELLULAR: support cellular device"
+    default n
+    select GPRS_GW
+    select TUYA_CAT1
+    if (ENABLE_CELLULAR)
+        # 使能涂鸦蜂窝播放器
+        config ENABLE_CATX_PLAYER
+            bool "ENABLE_CATX_PLAYER: enable tuya catx player"
+            default n
+
+        # 使能涂鸦蜂窝的电话功能
+        config ENABLE_CATX_CALL
+            bool "ENABLE_CATX_CALL: enable tuya catx phone feature"
+            default n
+
+        # 使能涂鸦蜂窝的短信功能
+        config ENABLE_CATX_SMS
+            bool "ENABLE_CATX_SMS: enable tuya catx sms feature"
+            default n
+
+        # 使能涂鸦蜂窝的电池管理功能
+        config ENABLE_CATX_VBAT
+            bool "ENABLE_CATX_VBAT: enable tuya catx vbat mananger feature"
+            default n
+        # 使能涂鸦蜂窝的电池管理功能
+        config ENABLE_CATX_KEYPAD
+            bool "ENABLE_CATX_KEYPAD: enable tuya catx keypad feature"
+            default n
+        # 使能涂鸦蜂窝的内置GPS
+        config ENABLE_CATX_GNSS
+            bool "ENABLE_CATX_GNSS: enable tuya catx gnss feature"
+            default n
+    endif
+
+

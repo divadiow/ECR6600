@@ -1,0 +1,18 @@
+ifeq ($(CONFIG_WIFI_SMARTCONFIG), y)
+	
+	INCPATHS += $(TOPDIR)/components/smartconfig
+
+	SMARTCONFIG_CSRCS =	awss_aplist.c \
+						smartconfig.c \
+						smartconfig_notify.c \
+						zconfig_ieee80211.c \
+						zconfig_utils.c \
+
+	CSRCS += $(SMARTCONFIG_CSRCS)
+
+#	CFLAGS += -D__TR_SW__
+
+	VPATH += :smartconfig
+#	INCPATHS += $(TOPDIR)/components/lwip/lwip-2.1.0/src/include/compat/posix/
+
+endif

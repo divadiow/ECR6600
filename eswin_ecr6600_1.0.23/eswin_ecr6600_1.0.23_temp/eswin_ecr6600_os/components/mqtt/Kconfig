@@ -1,0 +1,8 @@
+
+menuconfig MQTT
+	bool "MQTT Component Support"
+	default n
+	depends on LWIP
+	depends on PHREAD
+	select MBEDTLS
+	select URLPARSER

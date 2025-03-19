@@ -1,0 +1,1 @@
+# CFLAGS+=-D__OS_RANDOM__

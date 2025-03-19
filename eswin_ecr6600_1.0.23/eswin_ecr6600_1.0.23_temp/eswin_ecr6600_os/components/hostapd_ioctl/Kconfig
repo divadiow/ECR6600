@@ -1,0 +1,3 @@
+menuconfig CUSTOM_FHOSTAPD
+	bool "Custom fhostapd Support"
+	default n

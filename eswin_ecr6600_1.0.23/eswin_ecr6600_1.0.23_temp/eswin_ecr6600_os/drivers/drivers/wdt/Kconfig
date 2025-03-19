@@ -1,0 +1,16 @@
+
+menuconfig WDT
+	bool "WDT Driver Support"
+	default y
+	
+	
+	if WDT
+		menuconfig WDT_FEED_TASK
+		bool "start wdt task"
+		default n
+		
+		
+		menuconfig ANALYZE_REBOOT_TYPE
+		bool "Difference between HARDWARE_REBOOT and WDT_REBOOT"
+		default n
+	endif

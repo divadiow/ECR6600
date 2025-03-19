@@ -1,0 +1,8 @@
+ifeq ($(CONFIG_WDT),y)
+
+	CSRCS += wdt.c
+
+	VPATH += :drivers/wdt
+	INCPATHS +=drivers/wdt
+
+endif

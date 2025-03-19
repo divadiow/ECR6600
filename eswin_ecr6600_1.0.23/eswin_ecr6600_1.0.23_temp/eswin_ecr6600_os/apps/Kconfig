@@ -1,0 +1,3 @@
+source "apps/ble_apps/Kconfig"
+source "apps/unit_test/Kconfig"
+#source "apps/zeratul/Kconfig"
